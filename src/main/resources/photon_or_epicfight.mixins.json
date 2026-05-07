@@ -1,0 +1,18 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "net.zidou.photon_or_epicfight.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "photon_or_epicfight.refmap.json",
+  "mixins": [
+  ],
+  "client": [
+    "MixinPatchedRenderer"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
+  }
+}

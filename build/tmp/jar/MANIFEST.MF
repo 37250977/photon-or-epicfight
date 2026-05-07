@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Specification-Title: photon_or_epicfight
+Specification-Vendor: zi_dou
+Specification-Version: 1
+Implementation-Title: photon-or-epicfight
+Implementation-Version: 1.0
+Implementation-Vendor: zi_dou
+Implementation-Timestamp: 2026-05-07T08:14:48+0800
+MixinConfigs: photon_or_epicfight.mixins.json
+

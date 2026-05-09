@@ -5,7 +5,7 @@ import org.spongepowered.asm.mixin.Unique;
 import yesman.epicfight.api.animation.Pose;
 import yesman.epicfight.api.client.animation.ClientAnimator;
 import yesman.epicfight.api.client.animation.Layer;
-import net.zidou.photon_or_epicfight.RawAnimator;
+import net.zidou.photon_or_epicfight.animation.RawAnimator;
 
 @Mixin(value = ClientAnimator.class, remap = false)
 public class MixinPatchedRenderer implements RawAnimator {
@@ -15,10 +15,8 @@ public class MixinPatchedRenderer implements RawAnimator {
         ClientAnimator self = (ClientAnimator) (Object) this;
 
         Pose composed = new Pose();
-        // 从 baseLayer 取 pose
         composed.load(self.baseLayer.animationPlayer.getCurrentPose(self.getEntityPatch(), partialTicks), Pose.LoadOperation.OVERWRITE);
 
-        // 从复合层取 pose
         for (Layer.Priority priority : self.baseLayer.getBaseLayerPriority().highers()) {
             Layer layer = self.baseLayer.getLayer(priority);
             if (!layer.isOff()) {

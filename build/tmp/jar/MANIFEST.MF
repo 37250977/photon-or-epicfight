@@ -5,6 +5,6 @@ Specification-Version: 1
 Implementation-Title: photon-or-epicfight
 Implementation-Version: 1.0
 Implementation-Vendor: zi_dou
-Implementation-Timestamp: 2026-05-07T08:14:48+0800
+Implementation-Timestamp: 2026-05-09T10:30:32+0800
 MixinConfigs: photon_or_epicfight.mixins.json
 

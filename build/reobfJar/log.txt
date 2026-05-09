@@ -141,6 +141,63 @@ Adding Libraries to Inheritance
 Reading Input: D:\game\bag\endless\photon or epicfight\build\libs\photon_or_epicfight-1.0.jar
 Adding input to inheritance map
 Processing entries
+Conflicting propagated mapping for yesman/epicfight/api/animation/AnimationManager/prepare(Lnet/minecraft/server/packs/resources/ResourceManager;Lnet/minecraft/util/profiling/ProfilerFiller;)Ljava/lang/Object; from net/minecraft/server/packs/resources/SimplePreparableReloadListener/prepare(Lnet/minecraft/server/packs/resources/ResourceManager;Lnet/minecraft/util/profiling/ProfilerFiller;)Ljava/lang/Object;: prepare -> m_5944_
+Conflicting propagated mapping for yesman/epicfight/api/animation/AnimationManager/apply(Ljava/lang/Object;Lnet/minecraft/server/packs/resources/ResourceManager;Lnet/minecraft/util/profiling/ProfilerFiller;)V from net/minecraft/server/packs/resources/SimplePreparableReloadListener/apply(Ljava/lang/Object;Lnet/minecraft/server/packs/resources/ResourceManager;Lnet/minecraft/util/profiling/ProfilerFiller;)V: apply -> m_5787_
+Conflicting propagated mapping for com/lowdragmc/lowdraglib/utils/DummyWorld/getFluidState(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/material/FluidState; from net/minecraft/world/level/Level/getFluidState(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/material/FluidState;: getFluidState -> m_6425_
+Conflicting propagated mapping for com/lowdragmc/lowdraglib/utils/DummyWorld/playSound(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/entity/Entity;Lnet/minecraft/sounds/SoundEvent;Lnet/minecraft/sounds/SoundSource;FF)V from net/minecraft/world/level/Level/playSound(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/entity/Entity;Lnet/minecraft/sounds/SoundEvent;Lnet/minecraft/sounds/SoundSource;FF)V: playSound -> m_6269_
+Conflicting propagated mapping for com/lowdragmc/lowdraglib/utils/DummyWorld/playSeededSound(Lnet/minecraft/world/entity/player/Player;DDDLnet/minecraft/sounds/SoundEvent;Lnet/minecraft/sounds/SoundSource;FFJ)V from net/minecraft/world/level/Level/playSeededSound(Lnet/minecraft/world/entity/player/Player;DDDLnet/minecraft/sounds/SoundEvent;Lnet/minecraft/sounds/SoundSource;FFJ)V: playSeededSound -> m_214150_
+Conflicting propagated mapping for com/lowdragmc/lowdraglib/utils/DummyWorld/players()Ljava/util/List; from net/minecraft/world/level/EntityGetter/players()Ljava/util/List;: players -> m_6907_
+Conflicting propagated mapping for com/lowdragmc/lowdraglib/utils/DummyWorld/levelEvent(Lnet/minecraft/world/entity/player/Player;ILnet/minecraft/core/BlockPos;I)V from net/minecraft/world/level/LevelAccessor/levelEvent(Lnet/minecraft/world/entity/player/Player;ILnet/minecraft/core/BlockPos;I)V: levelEvent -> m_5898_
+Conflicting propagated mapping for com/lowdragmc/lowdraglib/utils/DummyWorld/setBlockEntity(Lnet/minecraft/world/level/block/entity/BlockEntity;)V from net/minecraft/world/level/Level/setBlockEntity(Lnet/minecraft/world/level/block/entity/BlockEntity;)V: setBlockEntity -> m_151523_
+Conflicting propagated mapping for com/lowdragmc/lowdraglib/utils/DummyWorld/addAlwaysVisibleParticle(Lnet/minecraft/core/particles/ParticleOptions;DDDDDD)V from net/minecraft/world/level/Level/addAlwaysVisibleParticle(Lnet/minecraft/core/particles/ParticleOptions;DDDDDD)V: addAlwaysVisibleParticle -> m_7107_
+Conflicting propagated mapping for com/lowdragmc/lowdraglib/utils/DummyWorld/setBlock(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;II)Z from net/minecraft/world/level/Level/setBlock(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;II)Z: setBlock -> m_6933_
+Conflicting propagated mapping for com/lowdragmc/lowdraglib/utils/DummyWorld/getBlockTicks()Lnet/minecraft/world/ticks/LevelTickAccess; from net/minecraft/world/level/LevelAccessor/getBlockTicks()Lnet/minecraft/world/ticks/LevelTickAccess;: getBlockTicks -> m_183326_
+Conflicting propagated mapping for com/lowdragmc/lowdraglib/utils/DummyWorld/getBiomeManager()Lnet/minecraft/world/level/biome/BiomeManager; from net/minecraft/world/level/Level/getBiomeManager()Lnet/minecraft/world/level/biome/BiomeManager;: getBiomeManager -> m_7062_
+Conflicting propagated mapping for com/lowdragmc/lowdraglib/utils/DummyWorld/playSeededSound(Lnet/minecraft/world/entity/player/Player;DDDLnet/minecraft/core/Holder;Lnet/minecraft/sounds/SoundSource;FFJ)V from net/minecraft/world/level/Level/playSeededSound(Lnet/minecraft/world/entity/player/Player;DDDLnet/minecraft/core/Holder;Lnet/minecraft/sounds/SoundSource;FFJ)V: playSeededSound -> m_262808_
+Conflicting propagated mapping for com/lowdragmc/lowdraglib/utils/DummyWorld/addParticle(Lnet/minecraft/core/particles/ParticleOptions;ZDDDDDD)V from net/minecraft/world/level/Level/addParticle(Lnet/minecraft/core/particles/ParticleOptions;ZDDDDDD)V: addParticle -> m_6493_
+Conflicting propagated mapping for com/lowdragmc/lowdraglib/utils/DummyWorld/addAlwaysVisibleParticle(Lnet/minecraft/core/particles/ParticleOptions;ZDDDDDD)V from net/minecraft/world/level/Level/addAlwaysVisibleParticle(Lnet/minecraft/core/particles/ParticleOptions;ZDDDDDD)V: addAlwaysVisibleParticle -> m_6485_
+Conflicting propagated mapping for com/lowdragmc/lowdraglib/utils/DummyWorld/playSeededSound(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/entity/Entity;Lnet/minecraft/core/Holder;Lnet/minecraft/sounds/SoundSource;FFJ)V from net/minecraft/world/level/Level/playSeededSound(Lnet/minecraft/world/entity/player/Player;Lnet/minecraft/world/entity/Entity;Lnet/minecraft/core/Holder;Lnet/minecraft/sounds/SoundSource;FFJ)V: playSeededSound -> m_213890_
+Conflicting propagated mapping for com/lowdragmc/lowdraglib/utils/DummyWorld/gatherChunkSourceStats()Ljava/lang/String; from net/minecraft/world/level/Level/gatherChunkSourceStats()Ljava/lang/String;: gatherChunkSourceStats -> m_46464_
+Conflicting propagated mapping for com/lowdragmc/lowdraglib/utils/DummyWorld/getBiome(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/core/Holder; from net/minecraft/world/level/LevelReader/getBiome(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/core/Holder;: getBiome -> m_204166_
+Conflicting propagated mapping for com/lowdragmc/lowdraglib/utils/DummyWorld/sendBlockUpdated(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/state/BlockState;I)V from net/minecraft/world/level/Level/sendBlockUpdated(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/state/BlockState;I)V: sendBlockUpdated -> m_7260_
+Conflicting propagated mapping for com/lowdragmc/lowdraglib/utils/DummyWorld/getShade(Lnet/minecraft/core/Direction;Z)F from net/minecraft/world/level/BlockAndTintGetter/getShade(Lnet/minecraft/core/Direction;Z)F: getShade -> m_7717_
+Conflicting propagated mapping for com/lowdragmc/lowdraglib/utils/DummyWorld/getEntity(I)Lnet/minecraft/world/entity/Entity; from net/minecraft/world/level/Level/getEntity(I)Lnet/minecraft/world/entity/Entity;: getEntity -> m_6815_
+Conflicting propagated mapping for com/lowdragmc/lowdraglib/utils/DummyWorld/getChunkSource()Lnet/minecraft/world/level/chunk/ChunkSource; from net/minecraft/world/level/LevelAccessor/getChunkSource()Lnet/minecraft/world/level/chunk/ChunkSource;: getChunkSource -> m_7726_
+Conflicting propagated mapping for com/lowdragmc/lowdraglib/utils/DummyWorld/getMapData(Ljava/lang/String;)Lnet/minecraft/world/level/saveddata/maps/MapItemSavedData; from net/minecraft/world/level/Level/getMapData(Ljava/lang/String;)Lnet/minecraft/world/level/saveddata/maps/MapItemSavedData;: getMapData -> m_7489_
+Conflicting propagated mapping for com/lowdragmc/lowdraglib/utils/DummyWorld/playSound(Lnet/minecraft/world/entity/player/Player;DDDLnet/minecraft/sounds/SoundEvent;Lnet/minecraft/sounds/SoundSource;FF)V from net/minecraft/world/level/Level/playSound(Lnet/minecraft/world/entity/player/Player;DDDLnet/minecraft/sounds/SoundEvent;Lnet/minecraft/sounds/SoundSource;FF)V: playSound -> m_6263_
+Conflicting propagated mapping for com/lowdragmc/lowdraglib/utils/DummyWorld/isLoaded(Lnet/minecraft/core/BlockPos;)Z from net/minecraft/world/level/Level/isLoaded(Lnet/minecraft/core/BlockPos;)Z: isLoaded -> m_46749_
+Conflicting propagated mapping for com/lowdragmc/lowdraglib/utils/DummyWorld/setMapData(Ljava/lang/String;Lnet/minecraft/world/level/saveddata/maps/MapItemSavedData;)V from net/minecraft/world/level/Level/setMapData(Ljava/lang/String;Lnet/minecraft/world/level/saveddata/maps/MapItemSavedData;)V: setMapData -> m_142325_
+Conflicting propagated mapping for com/lowdragmc/lowdraglib/utils/DummyWorld/gameEvent(Lnet/minecraft/world/level/gameevent/GameEvent;Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/world/level/gameevent/GameEvent$Context;)V from net/minecraft/world/level/LevelAccessor/gameEvent(Lnet/minecraft/world/level/gameevent/GameEvent;Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/world/level/gameevent/GameEvent$Context;)V: gameEvent -> m_214171_
+Conflicting propagated mapping for com/lowdragmc/lowdraglib/utils/DummyWorld/getScoreboard()Lnet/minecraft/world/scores/Scoreboard; from net/minecraft/world/level/Level/getScoreboard()Lnet/minecraft/world/scores/Scoreboard;: getScoreboard -> m_6188_
+Conflicting propagated mapping for com/lowdragmc/lowdraglib/utils/DummyWorld/getUncachedNoiseBiome(III)Lnet/minecraft/core/Holder; from net/minecraft/world/level/LevelReader/getUncachedNoiseBiome(III)Lnet/minecraft/core/Holder;: getUncachedNoiseBiome -> m_203675_
+Conflicting propagated mapping for com/lowdragmc/lowdraglib/utils/DummyWorld/gameEvent(Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/level/gameevent/GameEvent;Lnet/minecraft/core/BlockPos;)V from net/minecraft/world/level/LevelAccessor/gameEvent(Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/level/gameevent/GameEvent;Lnet/minecraft/core/BlockPos;)V: gameEvent -> m_142346_
+Conflicting propagated mapping for com/lowdragmc/lowdraglib/utils/DummyWorld/getRecipeManager()Lnet/minecraft/world/item/crafting/RecipeManager; from net/minecraft/world/level/Level/getRecipeManager()Lnet/minecraft/world/item/crafting/RecipeManager;: getRecipeManager -> m_7465_
+Conflicting propagated mapping for com/lowdragmc/lowdraglib/utils/DummyWorld/addParticle(Lnet/minecraft/core/particles/ParticleOptions;DDDDDD)V from net/minecraft/world/level/Level/addParticle(Lnet/minecraft/core/particles/ParticleOptions;DDDDDD)V: addParticle -> m_7106_
+Conflicting propagated mapping for com/lowdragmc/lowdraglib/utils/DummyWorld/getFluidTicks()Lnet/minecraft/world/ticks/LevelTickAccess; from net/minecraft/world/level/LevelAccessor/getFluidTicks()Lnet/minecraft/world/ticks/LevelTickAccess;: getFluidTicks -> m_183324_
+Conflicting propagated mapping for com/lowdragmc/lowdraglib/utils/DummyWorld/getLightEngine()Lnet/minecraft/world/level/lighting/LevelLightEngine; from net/minecraft/world/level/Level/getLightEngine()Lnet/minecraft/world/level/lighting/LevelLightEngine;: getLightEngine -> m_5518_
+Conflicting propagated mapping for com/lowdragmc/lowdraglib/utils/DummyWorld/getBlockEntity(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/entity/BlockEntity; from net/minecraft/world/level/Level/getBlockEntity(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/entity/BlockEntity;: getBlockEntity -> m_7702_
+Conflicting propagated mapping for com/lowdragmc/lowdraglib/utils/DummyWorld/getNoiseBiome(III)Lnet/minecraft/core/Holder; from net/minecraft/world/level/LevelReader/getNoiseBiome(III)Lnet/minecraft/core/Holder;: getNoiseBiome -> m_203495_
+Conflicting propagated mapping for com/lowdragmc/lowdraglib/utils/DummyWorld/canSeeSky(Lnet/minecraft/core/BlockPos;)Z from net/minecraft/world/level/BlockAndTintGetter/canSeeSky(Lnet/minecraft/core/BlockPos;)Z: canSeeSky -> m_45527_
+Conflicting propagated mapping for com/lowdragmc/lowdraglib/utils/DummyWorld/getEntities()Lnet/minecraft/world/level/entity/LevelEntityGetter; from net/minecraft/world/level/Level/getEntities()Lnet/minecraft/world/level/entity/LevelEntityGetter;: getEntities -> m_142646_
+Conflicting propagated mapping for com/lowdragmc/lowdraglib/utils/DummyWorld/getBrightness(Lnet/minecraft/world/level/LightLayer;Lnet/minecraft/core/BlockPos;)I from net/minecraft/world/level/BlockAndTintGetter/getBrightness(Lnet/minecraft/world/level/LightLayer;Lnet/minecraft/core/BlockPos;)I: getBrightness -> m_45517_
+Conflicting propagated mapping for com/lowdragmc/lowdraglib/utils/DummyWorld/getFreeMapId()I from net/minecraft/world/level/Level/getFreeMapId()I: getFreeMapId -> m_7354_
+Conflicting propagated mapping for com/lowdragmc/lowdraglib/utils/DummyWorld/getChunk(II)Lnet/minecraft/world/level/chunk/ChunkAccess; from net/minecraft/world/level/Level/getChunk(II)Lnet/minecraft/world/level/chunk/ChunkAccess;: getChunk -> m_6325_
+Conflicting propagated mapping for com/lowdragmc/lowdraglib/utils/DummyWorld/getRawBrightness(Lnet/minecraft/core/BlockPos;I)I from net/minecraft/world/level/BlockAndTintGetter/getRawBrightness(Lnet/minecraft/core/BlockPos;I)I: getRawBrightness -> m_45524_
+Conflicting propagated mapping for com/lowdragmc/lowdraglib/utils/DummyWorld/getBlockState(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState; from net/minecraft/world/level/Level/getBlockState(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;: getBlockState -> m_8055_
+Conflicting propagated mapping for com/lowdragmc/lowdraglib/utils/DummyWorld/registryAccess()Lnet/minecraft/core/RegistryAccess; from net/minecraft/world/level/Level/registryAccess()Lnet/minecraft/core/RegistryAccess;: registryAccess -> m_9598_
+Conflicting propagated mapping for com/lowdragmc/lowdraglib/utils/DummyWorld/enabledFeatures()Lnet/minecraft/world/flag/FeatureFlagSet; from net/minecraft/world/level/LevelReader/enabledFeatures()Lnet/minecraft/world/flag/FeatureFlagSet;: enabledFeatures -> m_246046_
+Conflicting propagated mapping for com/lowdragmc/lowdraglib/utils/DummyWorld/destroyBlockProgress(ILnet/minecraft/core/BlockPos;I)V from net/minecraft/world/level/Level/destroyBlockProgress(ILnet/minecraft/core/BlockPos;I)V: destroyBlockProgress -> m_6801_
+Conflicting propagated mapping for com/lowdragmc/lowdraglib/utils/TrackedDummyWorld/getFluidState(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/material/FluidState; from com/lowdragmc/lowdraglib/utils/DummyWorld/getFluidState(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/material/FluidState;: getFluidState -> m_6425_
+Conflicting propagated mapping for com/lowdragmc/lowdraglib/utils/TrackedDummyWorld/setBlockEntity(Lnet/minecraft/world/level/block/entity/BlockEntity;)V from com/lowdragmc/lowdraglib/utils/DummyWorld/setBlockEntity(Lnet/minecraft/world/level/block/entity/BlockEntity;)V: setBlockEntity -> m_151523_
+Conflicting propagated mapping for com/lowdragmc/lowdraglib/utils/TrackedDummyWorld/setBlock(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;II)Z from com/lowdragmc/lowdraglib/utils/DummyWorld/setBlock(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/state/BlockState;II)Z: setBlock -> m_6933_
+Conflicting propagated mapping for com/lowdragmc/lowdraglib/utils/TrackedDummyWorld/addFreshEntity(Lnet/minecraft/world/entity/Entity;)Z from net/minecraft/world/level/LevelWriter/addFreshEntity(Lnet/minecraft/world/entity/Entity;)Z: addFreshEntity -> m_7967_
+Conflicting propagated mapping for com/lowdragmc/lowdraglib/utils/TrackedDummyWorld/getBiome(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/core/Holder; from com/lowdragmc/lowdraglib/utils/DummyWorld/getBiome(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/core/Holder;: getBiome -> m_204166_
+Conflicting propagated mapping for com/lowdragmc/lowdraglib/utils/TrackedDummyWorld/getBlockTint(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/ColorResolver;)I from net/minecraft/world/level/LevelReader/getBlockTint(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/ColorResolver;)I: getBlockTint -> m_6171_
+Conflicting propagated mapping for com/lowdragmc/lowdraglib/utils/TrackedDummyWorld/getEntity(I)Lnet/minecraft/world/entity/Entity; from com/lowdragmc/lowdraglib/utils/DummyWorld/getEntity(I)Lnet/minecraft/world/entity/Entity;: getEntity -> m_6815_
+Conflicting propagated mapping for com/lowdragmc/lowdraglib/utils/TrackedDummyWorld/getChunkSource()Lnet/minecraft/world/level/chunk/ChunkSource; from com/lowdragmc/lowdraglib/utils/DummyWorld/getChunkSource()Lnet/minecraft/world/level/chunk/ChunkSource;: getChunkSource -> m_7726_
+Conflicting propagated mapping for com/lowdragmc/lowdraglib/utils/TrackedDummyWorld/getBlockEntity(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/entity/BlockEntity; from com/lowdragmc/lowdraglib/utils/DummyWorld/getBlockEntity(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/entity/BlockEntity;: getBlockEntity -> m_7702_
+Conflicting propagated mapping for com/lowdragmc/lowdraglib/utils/TrackedDummyWorld/getEntities()Lnet/minecraft/world/level/entity/LevelEntityGetter; from com/lowdragmc/lowdraglib/utils/DummyWorld/getEntities()Lnet/minecraft/world/level/entity/LevelEntityGetter;: getEntities -> m_142646_
+Conflicting propagated mapping for com/lowdragmc/lowdraglib/utils/TrackedDummyWorld/getBlockState(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState; from com/lowdragmc/lowdraglib/utils/DummyWorld/getBlockState(Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/state/BlockState;: getBlockState -> m_8055_
 Conflicting propagated mapping for net/minecraft/world/entity/LivingEntity/lambda$addAdditionalSaveData$3(Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/nbt/Tag;)V from net/minecraft/world/entity/player/Player/lambda$addAdditionalSaveData$3(Lnet/minecraft/nbt/CompoundTag;Lnet/minecraft/nbt/Tag;)V: lambda$addAdditionalSaveData$3 -> m_219754_
 Adding extras
 Sorting
@@ -148,15 +205,39 @@ Writing Output: D:\game\bag\endless\photon or epicfight\build\reobfJar\output.ja
   META-INF/
   META-INF/MANIFEST.MF
   META-INF/mods.toml
+  assets/
+  assets/photon_or_epicfight/
+  assets/photon_or_epicfight/lang/
+  assets/photon_or_epicfight/lang/en_us.json
+  assets/photon_or_epicfight/lang/zh_cn.json
   net/
   net/zidou/
   net/zidou/photon_or_epicfight/
-  net/zidou/photon_or_epicfight/ArmatureResolver.class
-  net/zidou/photon_or_epicfight/BoneCommand$ClientEvents.class
-  net/zidou/photon_or_epicfight/BoneCommand.class
-  net/zidou/photon_or_epicfight/BoneEffect.class
-  net/zidou/photon_or_epicfight/Config.class
-  net/zidou/photon_or_epicfight/FXExampleUsage.class
-  net/zidou/photon_or_epicfight/Photon_or_epicfight.class
+  net/zidou/photon_or_epicfight/animation/
+  net/zidou/photon_or_epicfight/animation/ArmatureResolver.class
+  net/zidou/photon_or_epicfight/animation/BoneEffect.class
+  net/zidou/photon_or_epicfight/animation/RawAnimator.class
+  net/zidou/photon_or_epicfight/command/
+  net/zidou/photon_or_epicfight/command/BoneCommand$ClientTick.class
+  net/zidou/photon_or_epicfight/command/BoneCommand.class
+  net/zidou/photon_or_epicfight/command/PreviewCommand.class
+  net/zidou/photon_or_epicfight/config/
+  net/zidou/photon_or_epicfight/config/Config.class
+  net/zidou/photon_or_epicfight/config/PhotonEditorConfig.class
+  net/zidou/photon_or_epicfight/core/
+  net/zidou/photon_or_epicfight/core/Photon_or_epicfight.class
+  net/zidou/photon_or_epicfight/editor/
+  net/zidou/photon_or_epicfight/editor/AnimationControlView.class
+  net/zidou/photon_or_epicfight/mixin/
+  net/zidou/photon_or_epicfight/mixin/EpicFightCapsMixin.class
+  net/zidou/photon_or_epicfight/mixin/MixinAnimationPlayer.class
+  net/zidou/photon_or_epicfight/mixin/MixinParticleScenePanel.class
+  net/zidou/photon_or_epicfight/mixin/MixinPatchedRenderer.class
+  net/zidou/photon_or_epicfight/mixin/MixinSceneRender.class
+  net/zidou/photon_or_epicfight/mixin/MixinTrackedDummyWorld.class
+  net/zidou/photon_or_epicfight/mixin/MixinViewMenu.class
+  net/zidou/photon_or_epicfight/store/
+  net/zidou/photon_or_epicfight/store/PhotonPatchStore.class
   pack.mcmeta
   photon_or_epicfight.mixins.json
+  photon_or_epicfight.refmap.json

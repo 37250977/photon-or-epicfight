@@ -1,0 +1,198 @@
+---- Minecraft Crash Report ----
+// Hey, that tickles! Hehehe!
+
+Time: 2026-05-08 11:41:09
+Description: Unexpected error
+
+java.lang.RuntimeException: not registered class net.zidou.photon_or_epicfight.animation.BoneEffect$LifeKeeper
+	at com.lowdragmc.lowdraglib.gui.editor.ILDLRegisterClient.name(ILDLRegisterClient.java:33) ~[ldlib-626676-7652228_mapped_parchment_2023.09.03-1.20.1.jar%23200!/:?] {re:classloading}
+	at com.lowdragmc.photon.client.gameobject.FXObject.<init>(FXObject.java:33) ~[photon-871522-7501597_mapped_parchment_2023.09.03-1.20.1.jar%23199!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at com.lowdragmc.photon.client.gameobject.EmptyFXObject.<init>(EmptyFXObject.java:13) ~[photon-871522-7501597_mapped_parchment_2023.09.03-1.20.1.jar%23199!/:?] {re:classloading}
+	at net.zidou.photon_or_epicfight.animation.BoneEffect$LifeKeeper.<init>(BoneEffect.java:139) ~[%23196!/:?] {re:classloading}
+	at net.zidou.photon_or_epicfight.animation.BoneEffect.start(BoneEffect.java:97) ~[%23196!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at net.zidou.photon_or_epicfight.animation.BoneEffect.play(BoneEffect.java:55) ~[%23196!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at net.zidou.photon_or_epicfight.command.BoneCommand.lambda$playFx$16(BoneCommand.java:149) ~[%23196!/:?] {re:classloading}
+	at net.zidou.photon_or_epicfight.command.BoneCommand$ClientTick.onClientTick(BoneCommand.java:202) ~[%23196!/:?] {re:classloading}
+	at net.zidou.photon_or_epicfight.command.__ClientTick_onClientTick_ClientTickEvent.invoke(.dynamic) ~[%23196!/:?] {re:classloading,pl:eventbus:B}
+	at net.minecraftforge.eventbus.ASMEventHandler.invoke(ASMEventHandler.java:73) ~[eventbus-6.0.5.jar:?] {}
+	at net.minecraftforge.eventbus.EventBus.post(EventBus.java:315) ~[eventbus-6.0.5.jar:?] {}
+	at net.minecraftforge.eventbus.EventBus.post(EventBus.java:296) ~[eventbus-6.0.5.jar:?] {}
+	at net.minecraftforge.event.ForgeEventFactory.onPostClientTick(ForgeEventFactory.java:965) ~[forge-1.20.1-47.4.0_mapped_parchment_2023.09.03-1.20.1-recomp.jar:?] {re:mixin,re:classloading,pl:mixin:APP:modernfix-modernfix.mixins.json:perf.potential_spawns_alloc.ForgeEventFactoryMixin,pl:mixin:A}
+	at net.minecraft.client.Minecraft.tick(Minecraft.java:1922) ~[forge-1.20.1-47.4.0_mapped_parchment_2023.09.03-1.20.1-recomp.jar:?] {re:mixin,pl:accesstransformer:B,pl:runtimedistcleaner:A,re:classloading,pl:accesstransformer:B,pl:mixin:A,pl:runtimedistcleaner:A}
+	at net.minecraft.client.Minecraft.runTick(Minecraft.java:1138) ~[forge-1.20.1-47.4.0_mapped_parchment_2023.09.03-1.20.1-recomp.jar:?] {re:mixin,pl:accesstransformer:B,pl:runtimedistcleaner:A,re:classloading,pl:accesstransformer:B,pl:mixin:A,pl:runtimedistcleaner:A}
+	at net.minecraft.client.Minecraft.run(Minecraft.java:723) ~[forge-1.20.1-47.4.0_mapped_parchment_2023.09.03-1.20.1-recomp.jar:?] {re:mixin,pl:accesstransformer:B,pl:runtimedistcleaner:A,re:classloading,pl:accesstransformer:B,pl:mixin:A,pl:runtimedistcleaner:A}
+	at net.minecraft.client.main.Main.main(Main.java:218) ~[forge-1.20.1-47.4.0_mapped_parchment_2023.09.03-1.20.1-recomp.jar:?] {re:classloading,pl:runtimedistcleaner:A}
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?] {}
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?] {}
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?] {}
+	at java.lang.reflect.Method.invoke(Method.java:569) ~[?:?] {}
+	at net.minecraftforge.fml.loading.targets.CommonLaunchHandler.runTarget(CommonLaunchHandler.java:111) ~[fmlloader-1.20.1-47.4.0.jar:?] {}
+	at net.minecraftforge.fml.loading.targets.CommonLaunchHandler.clientService(CommonLaunchHandler.java:99) ~[fmlloader-1.20.1-47.4.0.jar:?] {}
+	at net.minecraftforge.fml.loading.targets.ForgeClientUserdevLaunchHandler.devService(ForgeClientUserdevLaunchHandler.java:19) ~[fmlloader-1.20.1-47.4.0.jar:?] {}
+	at net.minecraftforge.fml.loading.targets.CommonDevLaunchHandler.lambda$makeService$7(CommonDevLaunchHandler.java:135) ~[fmlloader-1.20.1-47.4.0.jar:?] {}
+	at cpw.mods.modlauncher.LaunchServiceHandlerDecorator.launch(LaunchServiceHandlerDecorator.java:30) ~[modlauncher-10.0.9.jar:?] {}
+	at cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:53) ~[modlauncher-10.0.9.jar:?] {}
+	at cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:71) ~[modlauncher-10.0.9.jar:?] {}
+	at cpw.mods.modlauncher.Launcher.run(Launcher.java:108) ~[modlauncher-10.0.9.jar:?] {}
+	at cpw.mods.modlauncher.Launcher.main(Launcher.java:78) ~[modlauncher-10.0.9.jar:?] {}
+	at cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:26) ~[modlauncher-10.0.9.jar:?] {}
+	at cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:23) ~[modlauncher-10.0.9.jar:?] {}
+	at cpw.mods.bootstraplauncher.BootstrapLauncher.main(BootstrapLauncher.java:141) ~[bootstraplauncher-1.1.2.jar:?] {}
+
+
+A detailed walkthrough of the error, its code path and all known details is as follows:
+---------------------------------------------------------------------------------------
+
+-- Head --
+Thread: Render thread
+Suspected Mods: 
+	Photon (photon), Version: 1.1.17
+		at TRANSFORMER/photon@1.1.17/com.lowdragmc.photon.client.gameobject.FXObject.<init>(FXObject.java:33)
+
+	photon or epicfight (photon_or_epicfight), Version: 1.0
+		at TRANSFORMER/photon_or_epicfight@1.0/net.zidou.photon_or_epicfight.animation.BoneEffect$LifeKeeper.<init>(BoneEffect.java:139)
+
+	LowDragLib (ldlib), Version: 1.0.49
+		at TRANSFORMER/ldlib@1.0.49/com.lowdragmc.lowdraglib.gui.editor.ILDLRegisterClient.name(ILDLRegisterClient.java:33)
+Stacktrace:
+	at com.lowdragmc.lowdraglib.gui.editor.ILDLRegisterClient.name(ILDLRegisterClient.java:33) ~[ldlib-626676-7652228_mapped_parchment_2023.09.03-1.20.1.jar%23200!/:?] {re:classloading}
+	at com.lowdragmc.photon.client.gameobject.FXObject.<init>(FXObject.java:33) ~[photon-871522-7501597_mapped_parchment_2023.09.03-1.20.1.jar%23199!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at com.lowdragmc.photon.client.gameobject.EmptyFXObject.<init>(EmptyFXObject.java:13) ~[photon-871522-7501597_mapped_parchment_2023.09.03-1.20.1.jar%23199!/:?] {re:classloading}
+	at net.zidou.photon_or_epicfight.animation.BoneEffect$LifeKeeper.<init>(BoneEffect.java:139) ~[%23196!/:?] {re:classloading}
+	at net.zidou.photon_or_epicfight.animation.BoneEffect.start(BoneEffect.java:97) ~[%23196!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at net.zidou.photon_or_epicfight.animation.BoneEffect.play(BoneEffect.java:55) ~[%23196!/:?] {re:classloading,pl:runtimedistcleaner:A}
+	at net.zidou.photon_or_epicfight.command.BoneCommand.lambda$playFx$16(BoneCommand.java:149) ~[%23196!/:?] {re:classloading}
+	at net.zidou.photon_or_epicfight.command.BoneCommand$ClientTick.onClientTick(BoneCommand.java:202) ~[%23196!/:?] {re:classloading}
+	at net.zidou.photon_or_epicfight.command.__ClientTick_onClientTick_ClientTickEvent.invoke(.dynamic) ~[%23196!/:?] {re:classloading,pl:eventbus:B}
+	at net.minecraftforge.eventbus.ASMEventHandler.invoke(ASMEventHandler.java:73) ~[eventbus-6.0.5.jar%23114!/:?] {}
+	at net.minecraftforge.eventbus.EventBus.post(EventBus.java:315) ~[eventbus-6.0.5.jar%23114!/:?] {}
+	at net.minecraftforge.eventbus.EventBus.post(EventBus.java:296) ~[eventbus-6.0.5.jar%23114!/:?] {}
+	at net.minecraftforge.event.ForgeEventFactory.onPostClientTick(ForgeEventFactory.java:965) ~[forge-1.20.1-47.4.0_mapped_parchment_2023.09.03-1.20.1-recomp.jar%23190%23197!/:?] {re:mixin,re:classloading,pl:mixin:APP:modernfix-modernfix.mixins.json:perf.potential_spawns_alloc.ForgeEventFactoryMixin,pl:mixin:A}
+-- Affected level --
+Details:
+	All players: 1 total; [LocalPlayer['Dev'/1, l='ClientLevel', x=154.97, y=-60.00, z=-7.71]]
+	Chunk stats: 961, 609
+	Level dimension: minecraft:overworld
+	Level spawn location: World: (0,-60,0), Section: (at 0,4,0 in 0,-4,0; chunk contains blocks 0,-64,0 to 15,319,15), Region: (0,0; contains chunks 0,0 to 31,31, blocks 0,-64,0 to 511,319,511)
+	Level time: 201847 game time, 1 day time
+	Server brand: forge
+	Server type: Integrated singleplayer server
+Stacktrace:
+	at net.minecraft.client.multiplayer.ClientLevel.fillReportDetails(ClientLevel.java:470) ~[forge-1.20.1-47.4.0_mapped_parchment_2023.09.03-1.20.1-recomp.jar:?] {re:mixin,pl:accesstransformer:B,pl:runtimedistcleaner:A,re:classloading,pl:accesstransformer:B,pl:mixin:APP:mixins.epicfight.json:client.MixinClientLevel,pl:mixin:A,pl:runtimedistcleaner:A}
+	at net.minecraft.client.Minecraft.fillReport(Minecraft.java:2381) ~[forge-1.20.1-47.4.0_mapped_parchment_2023.09.03-1.20.1-recomp.jar:?] {re:mixin,pl:accesstransformer:B,pl:runtimedistcleaner:A,re:classloading,pl:accesstransformer:B,pl:mixin:A,pl:runtimedistcleaner:A}
+	at net.minecraft.client.Minecraft.run(Minecraft.java:745) ~[forge-1.20.1-47.4.0_mapped_parchment_2023.09.03-1.20.1-recomp.jar:?] {re:mixin,pl:accesstransformer:B,pl:runtimedistcleaner:A,re:classloading,pl:accesstransformer:B,pl:mixin:A,pl:runtimedistcleaner:A}
+	at net.minecraft.client.main.Main.main(Main.java:218) ~[forge-1.20.1-47.4.0_mapped_parchment_2023.09.03-1.20.1-recomp.jar:?] {re:classloading,pl:runtimedistcleaner:A}
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?] {}
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?] {}
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?] {}
+	at java.lang.reflect.Method.invoke(Method.java:569) ~[?:?] {}
+	at net.minecraftforge.fml.loading.targets.CommonLaunchHandler.runTarget(CommonLaunchHandler.java:111) ~[fmlloader-1.20.1-47.4.0.jar:?] {}
+	at net.minecraftforge.fml.loading.targets.CommonLaunchHandler.clientService(CommonLaunchHandler.java:99) ~[fmlloader-1.20.1-47.4.0.jar:?] {}
+	at net.minecraftforge.fml.loading.targets.ForgeClientUserdevLaunchHandler.devService(ForgeClientUserdevLaunchHandler.java:19) ~[fmlloader-1.20.1-47.4.0.jar:?] {}
+	at net.minecraftforge.fml.loading.targets.CommonDevLaunchHandler.lambda$makeService$7(CommonDevLaunchHandler.java:135) ~[fmlloader-1.20.1-47.4.0.jar:?] {}
+	at cpw.mods.modlauncher.LaunchServiceHandlerDecorator.launch(LaunchServiceHandlerDecorator.java:30) ~[modlauncher-10.0.9.jar:?] {}
+	at cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:53) ~[modlauncher-10.0.9.jar:?] {}
+	at cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:71) ~[modlauncher-10.0.9.jar:?] {}
+	at cpw.mods.modlauncher.Launcher.run(Launcher.java:108) ~[modlauncher-10.0.9.jar:?] {}
+	at cpw.mods.modlauncher.Launcher.main(Launcher.java:78) ~[modlauncher-10.0.9.jar:?] {}
+	at cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:26) ~[modlauncher-10.0.9.jar:?] {}
+	at cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:23) ~[modlauncher-10.0.9.jar:?] {}
+	at cpw.mods.bootstraplauncher.BootstrapLauncher.main(BootstrapLauncher.java:141) ~[bootstraplauncher-1.1.2.jar:?] {}
+
+
+-- Last reload --
+Details:
+	Reload number: 1
+	Reload reason: initial
+	Finished: Yes
+	Packs: vanilla, mod_resources, Moonlight Mods Dynamic Assets
+
+-- System Details --
+Details:
+	Minecraft Version: 1.20.1
+	Minecraft Version ID: 1.20.1
+	Operating System: Windows 11 (amd64) version 10.0
+	Java Version: 17.0.15, Eclipse Adoptium
+	Java VM Version: OpenJDK 64-Bit Server VM (mixed mode, sharing), Eclipse Adoptium
+	Memory: 1329687016 bytes (1268 MiB) / 1895825408 bytes (1808 MiB) up to 8522825728 bytes (8128 MiB)
+	CPUs: 32
+	Processor Vendor: GenuineIntel
+	Processor Name: 13th Gen Intel(R) Core(TM) i9-13900HX
+	Identifier: Intel64 Family 6 Model 183 Stepping 1
+	Microarchitecture: unknown
+	Frequency (GHz): 2.42
+	Number of physical packages: 1
+	Number of physical CPUs: 24
+	Number of logical CPUs: 32
+	Graphics card #0 name: OrayIddDriver Device
+	Graphics card #0 vendor: Shanghai Best Oray Information Technology Co., Ltd.
+	Graphics card #0 VRAM (MB): 0.00
+	Graphics card #0 deviceId: unknown
+	Graphics card #0 versionInfo: DriverVersion=17.50.19.949
+	Graphics card #1 name: NVIDIA GeForce RTX 4060 Laptop GPU
+	Graphics card #1 vendor: NVIDIA (0x10de)
+	Graphics card #1 VRAM (MB): 4095.00
+	Graphics card #1 deviceId: 0x28a0
+	Graphics card #1 versionInfo: DriverVersion=32.0.15.9621
+	Memory slot #0 capacity (MB): 16384.00
+	Memory slot #0 clockSpeed (GHz): 4.80
+	Memory slot #0 type: Unknown
+	Memory slot #1 capacity (MB): 16384.00
+	Memory slot #1 clockSpeed (GHz): 4.80
+	Memory slot #1 type: Unknown
+	Virtual memory max (MB): 65264.35
+	Virtual memory used (MB): 39362.55
+	Swap memory total (MB): 32768.00
+	Swap memory used (MB): 737.40
+	JVM Flags: 2 total; -XX:HeapDumpPath=MojangTricksIntelDriversForPerformance_javaw.exe_minecraft.exe.heapdump -XX:HeapDumpPath=MojangTricksIntelDriversForPerformance_javaw.exe_minecraft.exe.heapdump
+	Launched Version: MOD_DEV
+	Backend library: LWJGL version 3.3.1 build 7
+	Backend API: NVIDIA GeForce RTX 4060 Laptop GPU/PCIe/SSE2 GL version 4.6.0 NVIDIA 596.21, NVIDIA Corporation
+	Window size: 854x480
+	GL Caps: Using framebuffer using OpenGL 3.2
+	GL debug messages: 
+	Using VBOs: Yes
+	Is Modded: Definitely; Client brand changed to 'forge'; Server brand changed to 'forge'
+	Type: Integrated Server (map_client.txt)
+	Graphics mode: fancy
+	Resource Packs: 
+	Current Language: zh_cn
+	CPU: 32x 13th Gen Intel(R) Core(TM) i9-13900HX
+	Server Running: true
+	Player Count: 1 / 8; [ServerPlayer['Dev'/1, l='ServerLevel[新的世界]', x=154.97, y=-60.00, z=-7.71]]
+	Data Packs: vanilla, mod:moonlight (incompatible), mod:mixinsquared (incompatible), mod:ferritecore (incompatible), mod:ldlib (incompatible), mod:photon (incompatible), mod:forge, mod:dummmmmmy (incompatible), mod:epicfight, mod:modernfix (incompatible), mod:photon_or_epicfight, Moonlight Generated Pack
+	Enabled Feature Flags: minecraft:vanilla
+	World Generation: Stable
+	ModLauncher: 10.0.9+10.0.9+main.dcd20f30
+	ModLauncher launch target: forgeclientuserdev
+	ModLauncher naming: mcp
+	ModLauncher services: 
+		mixin-0.8.5.jar mixin PLUGINSERVICE 
+		eventbus-6.0.5.jar eventbus PLUGINSERVICE 
+		fmlloader-1.20.1-47.4.0.jar slf4jfixer PLUGINSERVICE 
+		fmlloader-1.20.1-47.4.0.jar object_holder_definalize PLUGINSERVICE 
+		fmlloader-1.20.1-47.4.0.jar runtime_enum_extender PLUGINSERVICE 
+		fmlloader-1.20.1-47.4.0.jar capability_token_subclass PLUGINSERVICE 
+		accesstransformers-8.0.4.jar accesstransformer PLUGINSERVICE 
+		fmlloader-1.20.1-47.4.0.jar runtimedistcleaner PLUGINSERVICE 
+		modlauncher-10.0.9.jar mixin TRANSFORMATIONSERVICE 
+		modlauncher-10.0.9.jar fml TRANSFORMATIONSERVICE 
+	FML Language Providers: 
+		minecraft@1.0
+		lowcodefml@null
+		javafml@null
+	Mod List: 
+		forge-1.20.1-47.4.0_mapped_parchment_2023.09.03-1.|Minecraft                     |minecraft                     |1.20.1              |DONE      |Manifest: a1:d4:5e:04:4f:d3:d6:e0:7b:37:97:cf:77:b0:de:ad:4a:47:ce:8c:96:49:5f:0a:cf:8c:ae:b2:6d:4b:8a:3f
+		selene-499980-7664875_mapped_parchment_2023.09.03-|Moonlight Library             |moonlight                     |1.20-2.16.28        |DONE      |Manifest: NOSIGNATURE
+		mixinsquared-forge-0.1.1.jar                      |MixinSquared                  |mixinsquared                  |0.1.1               |DONE      |Manifest: NOSIGNATURE
+		ferritecore-429235-4810975_mapped_parchment_2023.0|Ferrite Core                  |ferritecore                   |6.0.1               |DONE      |Manifest: NOSIGNATURE
+		ldlib-626676-7652228_mapped_parchment_2023.09.03-1|LowDragLib                    |ldlib                         |1.0.49              |DONE      |Manifest: NOSIGNATURE
+		photon-871522-7501597_mapped_parchment_2023.09.03-|Photon                        |photon                        |1.1.17              |DONE      |Manifest: NOSIGNATURE
+		                                                  |Forge                         |forge                         |47.4.0              |DONE      |Manifest: NOSIGNATURE
+		mmmmmmmmmmmm-225738-6860192_mapped_parchment_2023.|MmmMmmMmmmmm                  |dummmmmmy                     |1.20-2.0.9          |DONE      |Manifest: NOSIGNATURE
+		epic-fight-mod-405076-8049910_mapped_parchment_202|Epic Fight                    |epicfight                     |20.14.17            |DONE      |Manifest: NOSIGNATURE
+		modernfix-790626-8050207_mapped_parchment_2023.09.|ModernFix                     |modernfix                     |5.27.21+mc1.20.1    |DONE      |Manifest: NOSIGNATURE
+		main                                              |photon or epicfight           |photon_or_epicfight           |1.0                 |DONE      |Manifest: NOSIGNATURE
+	Crash Report UUID: c0ab7d9a-56aa-47cf-aedd-7a074fd2b5c2
+	FML: 47.4
+	Forge: net.minecraftforge:47.4.0

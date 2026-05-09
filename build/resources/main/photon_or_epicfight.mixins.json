@@ -7,7 +7,13 @@
   "mixins": [
   ],
   "client": [
-    "MixinPatchedRenderer"
+    "EpicFightCapsMixin",
+    "MixinTrackedDummyWorld",
+    "MixinParticleScenePanel",
+    "MixinPatchedRenderer",
+    "MixinAnimationPlayer",
+    "MixinViewMenu",
+    "MixinSceneRender"
   ],
   "injectors": {
     "defaultRequire": 1

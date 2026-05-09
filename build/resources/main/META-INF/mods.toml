@@ -39,7 +39,7 @@ authors = "zi_dou" #optional
 #displayTest="MATCH_VERSION" # MATCH_VERSION is the default if nothing is specified (#optional)
 
 # The description text for the mod (multi line!) (#mandatory)
-description = '''ç»æä½å'''
+description = '''????????????'''
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
 [[dependencies."photon_or_epicfight"]] #optional
 # the modid of the dependency

@@ -21,7 +21,7 @@ provider = "NULL"
 	first_person_model = true
 	enable_player_vanilla_model = true
 	enable_cosmetics = true
-	use_compute_shader = false
+	use_compute_shader = true
 	enable_pov_action = true
 	#Range: 1 ~ 10
 	long_press_count = 2

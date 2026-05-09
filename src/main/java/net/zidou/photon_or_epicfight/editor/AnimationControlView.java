@@ -136,7 +136,11 @@ public class AnimationControlView extends FloatViewWidget {
 
         applyBoneBinding();
 
-        PhotonPatchStore.syncCloneToPlayer();
+        try {
+            var helper = Class.forName("net.zidou.photon_or_epicfight.store.PhotonSyncHelper");
+            var method = helper.getMethod("syncCloneToPlayer");
+            method.invoke(null);
+        } catch (Exception ignored) {}
 
         if (!isPlaying || currentAnimator == null) return;
         if (currentPatch == null) return;

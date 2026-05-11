@@ -39,6 +39,10 @@ public class BoneEffect extends EntityEffect {
     }
 
     public static BoneEffect play(LivingEntity entity, FX fx, String boneName) {
+        return play(entity, fx, boneName, false);
+    }
+
+    public static BoneEffect play(LivingEntity entity, FX fx, String boneName, boolean allowMulti) {
         Level level = entity.level();
         if (!level.isClientSide) return null;
         var patch = EpicFightCapabilities.getEntityPatch(entity, LivingEntityPatch.class);
@@ -49,6 +53,7 @@ public class BoneEffect extends EntityEffect {
         if (joint == null) return null;
 
         BoneEffect effect = new BoneEffect(fx, level, entity, joint, boneName);
+        effect.setAllowMulti(allowMulti);
         effect.start();
         CACHE.computeIfAbsent(entity, k -> new ArrayList<>()).add(effect);
         return effect;

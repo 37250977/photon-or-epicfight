@@ -1,0 +1,22 @@
+{
+  "type": "epicfight_fx:profile",
+  "name": "katana_slash",
+  "fx": "photon:trail",
+  "position": "weapon",
+  "follow": true,
+  "overrides": {
+    "on_critical": {
+      "trigger": "on_hit",
+      "fx": "photon:orb_bloom",
+      "scale": 1.3,
+      "commands": [
+        { "type": "play_sound", "sound": "minecraft:entity.player.attack.crit", "volume": 0.8, "pitch": 1.2 }
+      ]
+    },
+    "on_guard_break": {
+      "trigger": "on_hit",
+      "fx": "photon:fire_bloom",
+      "scale": 2.0
+    }
+  }
+}

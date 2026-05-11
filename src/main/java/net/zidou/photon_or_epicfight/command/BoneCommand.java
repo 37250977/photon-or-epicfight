@@ -2,6 +2,7 @@ package net.zidou.photon_or_epicfight.command;
 
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.arguments.StringArgumentType;
+import com.mojang.brigadier.builder.ArgumentBuilder;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.suggestion.SuggestionProvider;
@@ -91,36 +92,42 @@ public class BoneCommand {
     }
 
     private static LiteralArgumentBuilder<CommandSourceStack> playBranch() {
-        var nsArg = Commands.argument("ns", StringArgumentType.word()).suggests(FX_NS_SUGGEST);
-        var pathArg = Commands.argument("path", StringArgumentType.word()).suggests(FX_PATH_SUGGEST);
-        var selfTarget = pathArg
-                .executes(ctx -> playFxOn(ctx, ctx.getSource().getEntityOrException().getId()))
-                .then(Commands.argument("boneName", StringArgumentType.word())
-                        .suggests(BONE_SUGGEST)
-                        .executes(ctx -> playFxOn(ctx, ctx.getSource().getEntityOrException().getId())));
-
         return Commands.literal("play")
-                .then(nsArg.then(selfTarget))
-                .then(Commands.literal("on")
-                        .then(Commands.argument("target", EntityArgument.entity())
-                                .then(nsArg.then(pathArg
-                                        .executes(ctx -> playFxOn(ctx, EntityArgument.getEntity(ctx, "target").getId()))
-                                        .then(Commands.argument("boneName", StringArgumentType.word())
-                                                .suggests(BONE_SUGGEST)
-                                                .executes(ctx -> playFxOn(ctx, EntityArgument.getEntity(ctx, "target").getId())))))));
+                .then(selfPlayNode())
+                .then(Commands.literal("on").then(targetPlayNode()));
+    }
+
+    private static ArgumentBuilder<CommandSourceStack, ?> selfPlayNode() {
+        var pathArg = Commands.argument("path", StringArgumentType.word()).suggests(FX_PATH_SUGGEST);
+        return Commands.argument("ns", StringArgumentType.word()).suggests(FX_NS_SUGGEST)
+                .then(pathArg
+                        .executes(ctx -> playFxOn(ctx, ctx.getSource().getEntityOrException().getId()))
+                        .then(Commands.argument("boneName", StringArgumentType.word())
+                                .suggests(BONE_SUGGEST)
+                                .executes(ctx -> playFxOn(ctx, ctx.getSource().getEntityOrException().getId()))));
+    }
+
+    private static ArgumentBuilder<CommandSourceStack, ?> targetPlayNode() {
+        var pathArg = Commands.argument("path", StringArgumentType.word()).suggests(FX_PATH_SUGGEST);
+        return Commands.argument("target", EntityArgument.entity())
+                .then(Commands.argument("ns", StringArgumentType.word()).suggests(FX_NS_SUGGEST)
+                        .then(pathArg
+                                .executes(ctx -> playFxOn(ctx, EntityArgument.getEntity(ctx, "target").getId()))
+                                .then(Commands.argument("boneName", StringArgumentType.word())
+                                        .suggests(BONE_SUGGEST)
+                                        .executes(ctx -> playFxOn(ctx, EntityArgument.getEntity(ctx, "target").getId())))));
     }
 
     private static LiteralArgumentBuilder<CommandSourceStack> stopBranch() {
+        var nsArg = Commands.argument("ns", StringArgumentType.word()).suggests(FX_NS_SUGGEST);
+        var pathArg = Commands.argument("path", StringArgumentType.word()).suggests(FX_PATH_SUGGEST);
         return Commands.literal("stop")
                 .executes(ctx -> stopAllOn(ctx, ctx.getSource().getEntityOrException().getId()))
                 .then(Commands.argument("boneName", StringArgumentType.word())
                         .suggests(BONE_SUGGEST)
                         .executes(ctx -> stopBoneOn(ctx, ctx.getSource().getEntityOrException().getId()))
-                        .then(Commands.argument("ns", StringArgumentType.word())
-                                .suggests(FX_NS_SUGGEST)
-                                .then(Commands.argument("path", StringArgumentType.word())
-                                        .suggests(FX_PATH_SUGGEST)
-                                        .executes(ctx -> stopSpecificOn(ctx, ctx.getSource().getEntityOrException().getId())))))
+                        .then(nsArg.then(pathArg
+                                .executes(ctx -> stopSpecificOn(ctx, ctx.getSource().getEntityOrException().getId())))))
                 .then(Commands.literal("on")
                         .then(Commands.argument("target", EntityArgument.entity())
                                 .executes(ctx -> stopAllOn(ctx, EntityArgument.getEntity(ctx, "target").getId()))
@@ -154,13 +161,13 @@ public class BoneCommand {
                 new Class<?>[]{ResourceLocation.class, String.class, int.class},
                 rl, boneName, targetId));
 
-        ctx.getSource().sendSuccess(() -> Component.literal("§a播放 " + rl + " → [" + boneName + "]"), true);
+        ctx.getSource().sendSuccess(() -> Component.translatable("message.photon_or_epicfight.bone.play", rl.toString(), boneName), true);
         return Command.SINGLE_SUCCESS;
     }
 
     private static int stopAllOn(CommandContext<CommandSourceStack> ctx, int targetId) {
         CLIENT_ACTIONS.add(() -> runClientHelper("stopAllOn", new Class<?>[]{int.class}, targetId));
-        ctx.getSource().sendSuccess(() -> Component.literal("§c已停止所有骨骼特效"), true);
+        ctx.getSource().sendSuccess(() -> Component.translatable("message.photon_or_epicfight.bone.stop_all"), true);
         return Command.SINGLE_SUCCESS;
     }
 
@@ -168,7 +175,7 @@ public class BoneCommand {
         String boneName = StringArgumentType.getString(ctx, "boneName");
         CLIENT_ACTIONS.add(() -> runClientHelper("stopBoneOn",
                 new Class<?>[]{String.class, int.class}, boneName, targetId));
-        ctx.getSource().sendSuccess(() -> Component.literal("§c已停止 [" + boneName + "] 上的特效"), true);
+        ctx.getSource().sendSuccess(() -> Component.translatable("message.photon_or_epicfight.bone.stop_bone", boneName), true);
         return Command.SINGLE_SUCCESS;
     }
 
@@ -180,7 +187,7 @@ public class BoneCommand {
         CLIENT_ACTIONS.add(() -> runClientHelper("stopSpecificOn",
                 new Class<?>[]{String.class, ResourceLocation.class, int.class},
                 boneName, rl, targetId));
-        ctx.getSource().sendSuccess(() -> Component.literal("§c已停止 [" + boneName + "] 上的 " + rl), true);
+        ctx.getSource().sendSuccess(() -> Component.translatable("message.photon_or_epicfight.bone.stop_specific", rl.toString(), boneName), true);
         return Command.SINGLE_SUCCESS;
     }
 
@@ -197,7 +204,7 @@ public class BoneCommand {
         } catch (Exception ignored) {}
     }
 
-    @Mod.EventBusSubscriber(modid = "photon_or_epicfight", value = Dist.CLIENT)
+    @Mod.EventBusSubscriber(modid = "photon_and_epicfight", value = Dist.CLIENT)
     public static class ClientTick {
         @SubscribeEvent
         public static void onClientTick(TickEvent.ClientTickEvent event) {

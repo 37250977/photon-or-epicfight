@@ -6,7 +6,7 @@ import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.network.chat.Component;
 import net.minecraftforge.fml.loading.FMLEnvironment;
-import net.zidou.photon_or_epicfight.config.PhotonEditorConfig;
+import net.zidou.photon_or_epicfight.editor_config.PhotonEditorConfig;
 
 public class PreviewCommand {
     public static LiteralArgumentBuilder<CommandSourceStack> create() {

@@ -3,7 +3,7 @@ package net.zidou.photon_or_epicfight.mixin;
 import com.lowdragmc.lowdraglib.gui.editor.annotation.LDLRegister;
 import com.lowdragmc.lowdraglib.gui.editor.runtime.AnnotationDetector;
 import com.lowdragmc.lowdraglib.gui.editor.ui.view.FloatViewWidget;
-import net.zidou.photon_or_epicfight.config.PhotonEditorConfig;
+import net.zidou.photon_or_epicfight.editor_config.PhotonEditorConfig;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;

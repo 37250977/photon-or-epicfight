@@ -40,12 +40,12 @@ public class BoneCommandClientHelper {
     public static void listFX(Consumer<Component> sender) {
         var mc = Minecraft.getInstance();
         if (mc == null || mc.level == null) return;
-        sender.accept(Component.literal("§6[FX] 可用特效:"));
+        sender.accept(Component.translatable("message.photon_or_epicfight.bone.list_title"));
         mc.getResourceManager()
                 .listResources("fx", arg -> arg.getPath().endsWith(".fx"))
                 .keySet().stream()
                 .map(rl -> rl.getNamespace() + ":" + rl.getPath().substring(3, rl.getPath().length() - 3))
-                .forEach(fx -> sender.accept(Component.literal("  §e" + fx)));
+                .forEach(fx -> sender.accept(Component.translatable("message.photon_or_epicfight.bone.list_entry", fx)));
     }
 
     public static void playFXOn(ResourceLocation rl, String boneName, int targetEntityId) {

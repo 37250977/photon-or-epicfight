@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import net.zidou.photon_or_epicfight.config.PhotonEditorConfig;
+import net.zidou.photon_or_epicfight.editor_config.PhotonEditorConfig;
 import net.zidou.photon_or_epicfight.store.PhotonPatchStore;
 import yesman.epicfight.world.capabilities.entitypatch.EntityPatch;
 import yesman.epicfight.world.capabilities.entitypatch.player.PlayerPatch;

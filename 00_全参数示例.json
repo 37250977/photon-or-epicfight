@@ -1,0 +1,381 @@
+{
+  // ============================================================
+  // Photon + EpicFight 特效联动数据包 —— 全参数中文说明
+  // 文件路径: data/<modid>/fx_linkage/任意名字.json
+  // 注意: JSON 标准不支持注释，下面这些中文说明只是为了演示
+  //       实际使用前务必删掉所有 // 开头的注释行
+  // ============================================================
+
+  "type": "epicfight_fx:linkage",
+
+  "priority": 10,
+  // ✅ 优先级（0~100，默认 10），越高越优先匹配，已实现
+
+
+  "side": "both",
+  // ✅ 运行端: "both" / "client" / "server"，已实现
+
+
+  // ======================== 武器匹配 ========================
+
+  "weapon_categories": [
+    // ✅ 已实现 — 自动识别类别所属 mod
+    //   内置: epicfight:sword / epicfight:greatsword / epicfight:katana / epicfight:longsword 等
+    //   其他 mod: invincible:sword, rpgcombat:rpg_greatsword, cdmoveset:s_sword 等
+    "epicfight:longsword",
+    "epicfight:greatsword"
+  ],
+
+  "weapons": [
+    // ✅ 匹配具体物品 ID，与 weapon_categories 是"或"关系
+    "minecraft:diamond_sword"
+  ],
+
+  "skills": [
+    // ✅ 匹配技能 ID
+    "epicfight:katana_autoguard"
+  ],
+
+  "hand": "mainhand",
+  // ✅ 手部限制: "mainhand" / "offhand"，不填则不限制
+
+
+  // ======================== 条件系统 ========================
+
+  "conditions": [
+    // ✅ 全局条件，全部满足才匹配此 linkage，缺省 = 无条件（永远匹配）
+
+    // ====== 数值范围条件 ======
+    // 用法: 提供 min（最小值）和 max（最大值），实际值在 [min, max] 范围内则通过
+    //       min 和 max 可单独使用一个，省略的一端不做限制
+
+    { "type": "phase", "min": 0, "max": 3 },
+    // ↑ 条件: 阶段计数器（phase）在指定范围内
+    //   说明: 每次执行 increment_counter 命令会 +1，执行 reset_counter 或 set_phase 可手动设置
+    //   用途: 实现多阶段特效——第一刀触发火花，第二刀触发火焰，第三刀触发爆炸
+    //   注意: phase 需要手动通过 states 或 commands 管理，不会自动递增
+
+    { "type": "combo", "min": 1, "max": 999 },
+    // ↑ 条件: EpicFight 连击数（combo counter）在指定范围内
+    //   说明: 连击数由 EpicFight 自动管理，每次命中目标 +1，脱离战斗重置
+    //   用途: 连击达到特定次数时触发不同的特效或音效
+
+    { "type": "distance", "min": 0, "max": 5 },
+    // ↑ 条件: 攻击者与目标之间的距离（格为单位）在指定范围内
+    //   说明: 使用 Minecraft 的 distanceTo() 计算，单位为格
+    //   用途: 近战攻击时只在贴身范围内触发，远程攻击时只在远距离触发
+
+    // ====== 血量比例条件 ======
+    // 用法: 通过 target 指定 "self"（自己）或 "target"（目标），用 comparator 指定比较方式
+    //       min 和 max 的值范围: 0.0 ~ 1.0（0% ~ 100%）
+
+    { "type": "health", "target": "target", "max": 0.3, "comparator": "less_ratio" },
+    // ↑ 条件: 目标或自己的当前血量比例满足条件
+    //   target: "self" = 攻击者自己的血量, "target" = 被攻击者的血量
+    //   comparator 比较器说明:
+    //     "less_ratio"              → 当前血量比例 < 指定值（低于多少）
+    //     "greater_ratio"           → 当前血量比例 > 指定值（高于多少）
+    //     "less_ratio_contain"      → 当前血量比例 <= 指定值（低于等于多少）
+    //     "greater_ratio_contain"   → 当前血量比例 >= 指定值（高于等于多少）
+    //     省略（只有 min/max）       → 在 [min, max] 范围内
+    //   示例: { "max": 0.3, "comparator": "less_ratio" } = 血量低于 30% 时触发
+
+    // ====== 匹配判断条件 ======
+    // 用法: 通过 value 指定要匹配的值，完全匹配则为 true
+
+    { "type": "weapon_category", "value": "epicfight:katana" },
+    // ↑ 条件: 攻击者当前手持武器的 EpicFight 武器类型
+    //   说明: 自动识别类别所属的 mod，除了 epicfight 内置类型外也支持其他 mod 注册的类型
+    //   内置: epicfight:sword（剑）, epicfight:greatsword（大剑）, epicfight:katana（太刀）
+    //         epicfight:dagger（匕首）, epicfight:spear（矛）, epicfight:tachi（长太刀）
+    //         epicfight:longsword（长剑）, epicfight:uchigatana（打刀）, epicfight:axe（斧）
+    //         epicfight:fist（拳套）, epicfight:shield（盾）, epicfight:bow（弓）, epicfight:crossbow（弩）
+    //   其他 mod 示例: invincible:sword, rpgcombat:rpg_greatsword, cdmoveset:s_sword
+
+    { "type": "weapon_id", "value": "minecraft:diamond_sword" },
+    // ↑ 条件: 攻击者手持的物品的注册 ID（Registry ID）
+    //   说明: 格式为 <命名空间>:<路径>，与 weapon_categories 是"或"关系
+    //   用途: 只对特定武器生效，如自定义的传奇武器
+
+    { "type": "skill", "value": "epicfight:katana_autoguard" },
+    // ↑ 条件: 攻击者当前激活的技能 ID
+    //   说明: 检查攻击者正在使用的 EpicFight 技能
+    //   用途: 特定技能释放期间才触发的特效
+
+    { "type": "hit_type", "value": "critical" },
+    //   ↑ 条件: 命中类型
+    //   说明: 由 LivingHurtEvent 中的伤害值决定——单次伤害 > 目标最大血量 × 30% 则为 "critical"，否则为 "normal"
+    //   可选值: "normal"（普通攻击）, "critical"（暴击/高伤害攻击）
+
+    { "type": "target_type", "value": "boss" },
+    //   ↑ 条件: 被攻击目标的实体类型分类
+    //   可选值:
+    //     "living"  → 任何活体实体（默认，所有 LivingEntity 都算）
+    //     "player"  → 玩家（instanceof Player）
+    //     "boss"    → Boss 类实体（canChangeDimensions() 返回 false 的实体）
+
+    { "type": "target_state", "value": "guarding" },
+    //   ↑ 条件: 被攻击目标当前的状态
+    //   可选值:
+    //     "guarding"  → 格挡中（目标正在使用格挡技能）
+    //     "stunned"   → 眩晕状态（EntityState.hurt > 0，受到攻击时的硬直）
+    //     "knockdown" → 击倒状态（EntityState.knockDown，被击飞或倒地）
+    //     "airborne"  → 滞空状态（不在接触地面，包括跳跃、浮空、下落）
+
+    // ====== 环境条件 ======
+    // 用法: 检测战场环境，不需要额外的数据源
+
+    { "type": "entity_tag", "value": "minecraft:skeletons" },
+    // ↑ 条件: 目标实体的 EntityType 标签（Tag）
+    //   说明: 使用 Minecraft 的实体类型标签系统，标签定义在 data/<命名空间>/tags/entity_types/ 下
+    //   内置标签: minecraft:skeletons（骷髅类）, minecraft:raiders（袭击者）, minecraft:arthropod（节肢动物）等
+    //   用途: 对特定生物群体的特效
+
+    { "type": "biome", "value": "minecraft:plains" },
+    // ↑ 条件: 攻击者所在的生物群系
+    //   说明: 检测攻击者脚下方块所属的生物群系 ID
+    //   用途: 在不同地形下有不同的特效表现
+
+    { "type": "weather", "value": "rain" },
+    //   ↑ 条件: 当前天气
+    //   可选值:
+    //     "clear"   → 晴天（不下雨也不打雷）
+    //     "rain"    → 雨天（正在下雨但未打雷）
+    //     "thunder" → 雷暴（正在下暴雨并打雷）
+
+    { "type": "moon_phase", "value": "0" },
+    // ↑ 条件: 当前世界的月相
+    //   说明: 使用 Minecraft 原版的月相系统，值范围 0~7
+    //   含义: 0 = 满月, 1 = 亏凸月, 2 = 下弦月, 3 = 残月, 4 = 新月, 5 = 蛾眉月, 6 = 上弦月, 7 = 盈凸月
+    //   用途: 满月时触发特殊特效，适合神秘主题的武器
+
+    { "type": "enchantment", "value": "minecraft:sharpness" },
+    // ↑ 条件: 攻击者主手武器是否附带了指定附魔
+    //   说明: 检测武器上的附魔，只要有至少 1 级就算满足
+    //   用途: 锋利 V 的剑触发斩击特效，火焰附加的剑触发燃烧特效
+
+    { "type": "potion_effect", "value": "minecraft:strength" },
+    // ↑ 条件: 攻击者身上是否带有指定的状态效果（Buff）
+    //   说明: 检测攻击者的活跃药水效果列表
+    //   用途: 力量增益下触发额外的震地特效
+
+    // ====== 计数器条件 ======
+    // 用法: 与 linkage 的 states 系统联动
+
+    { "type": "has_counter", "min": 0, "max": 3 },
+    // ↑ 条件: 阶段性计数器（phase），与顶层的 phase 条件功能相同
+    //   说明: 与 phase 条件的区别——has_counter 是 events 级别条件（判断当前 phase），
+    //         phase 是全局 linkage 匹配条件。两者底层使用同一个 states.phase 值
+    //   用途: 多阶段特效的 event 级别控制
+
+    // ====== EpicFight 专用条件 ======
+
+    { "type": "animation_phase", "value": "2" },
+    // ↑ 条件: EpicFight 动画的阶段
+    //   说明: 从 EntityState.getLevel() 获取，不同动画的阶段划分不同
+    //   通用: 1 = 蓄力/准备阶段（windup）, 2 = 攻击阶段（strike）, 3 = 收招阶段（recovery）
+    //   用途: 只在挥刀过程中触发刀光特效，蓄力和收招时不触发
+
+    // ====== 时间条件 ======
+
+    { "type": "world_time", "min": 0.5, "max": 0.75 },
+    // ↑ 条件: 当前世界时间（0~1 比例）
+    //   说明: 基于世界全天时间 % 24000 计算，0 = 日出（0:00 游戏内时间）, 0.25 = 正午, 0.5 = 日落, 0.75 = 午夜
+    //   示例: min=0.5, max=0.75 表示从日落到午夜期间触发，max 可省略（单边限制）
+
+    // ====== 概率条件 ======
+
+    { "type": "random", "value": "0.5" },
+    // ↑ 条件: 概率触发
+    //   说明: 每次触发事件时，生成一个 [0, 1) 随机数，小于指定值则通过
+    //   示例: 0.5 = 50% 概率, 0.33 = 33% 概率, 1.0 = 100% 总是触发
+    //   用途: 让特效有一定的随机性，避免每次完全相同
+
+    // ====== 耐力条件 ======
+
+    { "type": "stamina", "max": 0.3, "comparator": "less_ratio" },
+    //   ↑ 条件: 攻击者的当前耐力比例（需安装 CombatEvolution 模组）
+    //   说明: 使用 CombatEvolution 的耐力系统，检测当前剩余耐力占最大耐力的比例
+    //         不装 CE 时此条件永远返回 false，不影响其他条件
+    //   可选值: 0.0（耐力耗尽）~ 1.0（耐力全满）
+
+    // ====== 逻辑组合 ======
+
+    { "all_of": [
+      // ↑ 逻辑与（AND）：数组内的条件全部满足才算通过
+      { "type": "weapon_category", "value": "epicfight:katana" },
+      { "type": "hit_type", "value": "critical" }
+    ]},
+    //   用途: "必须是太刀 + 暴击" 时才触发
+
+    { "any_of": [
+      // ↑ 逻辑或（OR）：数组内的条件满足任意一个就算通过
+      { "type": "combo", "min": 5 },
+      { "type": "health", "target": "target", "max": 0.2, "comparator": "less_ratio" }
+    ]},
+    //   用途: "连击≥5 或 目标血量低于 20%" 时触发
+
+    { "none_of": [
+      // ↑ 逻辑非（NOT）：数组内的条件全部不满足才算通过
+      { "type": "target_state", "value": "guarding" }
+    ]}
+    //   用途: "目标不在格挡" 时才触发
+    // ✅ 逻辑条件全部已实现
+  ],
+
+
+  // ======================== 阶段与冷却 ========================
+
+  "states": {
+    "phaselock": false,   // ✅ 是否锁定阶段
+    "phase": 0,           // ✅ 初始阶段
+    "max_phase": 3,       // ✅ 最大阶段
+    "cooldown": 5,        // ✅ 冷却（tick）
+    "global": false       // ✅ 全局冷却（所有 linkage 共享）
+  },
+
+
+  // ======================== 可用事件 ========================
+
+  // ✅ 所有事件均已实现（共 16 个，按用途分组），均可作为顶层 key 或 events 数组使用:
+  //
+  // ====== 攻击视角（你攻击别人时触发）======  
+  //   on_hit          成功命中目标，触发的条件: LivingHurtEvent 或 DEAL_DAMAGE_EVENT
+  //   on_first_hit    单次战斗中首次命中目标，命中计数器从 0 变为 1 时触发
+  //   on_blocked      你的攻击被目标成功格挡，判断条件: 目标为玩家且 GuardSkill.isActivated
+  //
+  // ====== 防守视角（你被攻击时触发）======  
+  //   on_guard        你成功格挡了对方的攻击，触发的条件: TAKE_DAMAGE_EVENT + BLOCKED 状态
+  //   on_parry        你成功招架了对方的攻击，触发的条件: TAKE_DAMAGE_EVENT + parried 状态
+  //   on_dodge        你成功闪避了对方的攻击，触发的条件: DODGE_SUCCESS_EVENT
+  //
+  // ====== 技能视角 ======  
+  //   on_skill_start  技能开始施放，触发的条件: SKILL_CAST_EVENT（任何 EpicFight 技能）
+  //   on_skill_end    技能结束/取消，触发的条件: SKILL_CANCEL_EVENT 或 ATTACK_ANIMATION_END_EVENT
+  //   on_charged      蓄力完成/达到最大蓄力阶段，触发的条件: SKILL_CAST_EVENT + 蓄力量达到上限
+  //
+  // ====== 状态视角 ======  
+  //   on_combo        连击数发生变化（增加），触发的条件: COMBO_COUNTER_HANDLE_EVENT
+  //   on_phase_change 动画阶段/combo 阶段发生变化，触发的条件: ANIMATION_BEGIN 或 ATTACK_PHASE_END_EVENT
+  //   on_airborne     进入滞空状态（跳跃/下落/飞行），触发的条件: ANIMATION_BEGIN + jump/fly/fall 动画
+  //   on_stun         对目标造成眩晕（不含击倒），触发的条件: EntityStunEvent + stunType != KNOCKDOWN
+  //   on_knockdown    将目标击倒，触发的条件: EntityStunEvent + stunType == KNOCKDOWN
+  //   on_kill         击杀目标，触发的条件: PLAYER_KILLED_EVENT（玩家击杀）或 execution_finished（CE）
+  //
+  // ====== 其他 ======  
+  //   on_execution    处决触发（需安装 CombatEvolution），触发的条件: LivingHurtEvent + execution 伤害标签
+
+
+  // ======================== 特效事件配置 ========================
+
+  "on_skill_start": {
+    "trigger": "on_skill_start",
+    "fx": "photon:fire",
+    // ↑ 格式: <命名空间>:<路径>，对应 assets/<命名空间>/fx/<路径>.fx
+    //   运行时可能有的演示特效: fire / orb_bloom / trail / portal / matrix / test 等
+    "position": "weapon",
+    // ↑ 特效的生成位置
+    //   可选值:
+    //     "weapon"  → 在攻击者的武器位置生成（推荐），计算方式: 攻击者坐标 + 眼睛高度 × 0.6
+    //                 适用于挥砍、斩击等随武器移动的特效
+    //     "self"    → 在攻击者自身位置生成，适用于全身类特效（光环、护盾、爆发）
+    //     "target"  → 在命中点位置生成，适用于命中特效（blood、爆裂、火花）
+    //                 如果提供了 hitPos（命中坐标）则用 hitPos，否则用目标坐标
+    //     "ground"  → 在地面生成（Y=0），适用于地面裂缝、地刺等场景特效
+    //   注意: 当 follow=true 且指定了 bone 时，position 决定跟随哪个实体
+    //         "weapon"/"self" → 跟随攻击者, "target" → 跟随目标
+    "follow": true,
+    "bone": "Tool_R",
+    // ✅ 骨骼名（HumanoidArmature）: Tool_R / Tool_L / Hand_R / Hand_L / Head / Chest
+    "follow_rotation": true,
+    // ↑ 特效是否跟随实体/骨骼的旋转方向
+    //   说明: 控制特效的朝向，有以下几种模式:
+    //   true / "forward"  → 跟随实体的前进方向（默认），实体面向哪特效就面向哪
+    //   "look"            → 跟随实体的视线方向，适用于"眼睛发射光线"类特效
+    //   "xrot"            → 跟随实体 X 轴旋转，适用于俯仰角也跟随的特效
+    //   false / "none"    → 不跟随旋转，特效保持默认方向
+    //   当绑定 bone 时，推荐启用（bone 位置 + 骨骼旋转同时跟随效果最佳）
+    "allow_multi": false,
+    // ✅ false=先停旧再播新, true=叠加
+    "inherit_color": true,
+    "scale": 1.5,
+    // ✅ 缩放（骨骼模式下无效）
+    "duration": 20,
+    "profile": "katana_slash",
+    // ↑ 引用特效配置档（profile），实现多个 linkage 共享同一套默认参数
+    //   说明: profile 文件放在 data/<modid>/fx_profiles/ 下
+    //         引用时写文件名（不含 .json 后缀），
+    //         例如 data/photon_and_epicfight/fx_profiles/katana_slash.json 则写 "katana_slash"
+    //   合并规则: linkage 中显式写的字段 > profile 中的字段（覆盖）
+    //             未在 linkage 中指定的字段，使用 profile 中的值作为默认值
+    //   效果: 相当于把 profile 里的内容"展开"到当前效果里，实现继承
+    "conditions": [],
+    // ↑ 事件级别的条件列表（与顶层的 conditions 语法完全相同）
+    //   所有条件同时满足才执行此特效，缺省 = 无条件
+    //   适用于: 同一个事件中根据不同命中类型播放不同特效的情况
+    "commands": [
+      // commands 数组 —— 特效触发时可以同时执行多个指令，按顺序依次执行
+      //   每个 command 独立工作，可以搭配 conditions 条件分别触发
+      //   支持的指令 type:
+
+      // ====== 特效指令 ======
+      { "type": "spawn_fx", "fx": "photon:fire", "position": "target", "scale": 1.5 },
+      // ↑ 生成一次特效，与顶层 fx 配置语法完全一致
+      //   spawn_fx = 生成持续特效, spawn_fx_burst = 生成爆发特效（一次性播放）
+
+      // ====== 音效指令 ======
+      { "type": "play_sound", "sound": "minecraft:entity.player.attack.crit", "volume": 1.0, "pitch": 1.3 }
+      // ↑ 播放音效，sound = 音效 ID，volume = 音量（0~1），pitch = 音调（0.5~2.0）
+
+      // ====== 伤害指令 ======
+      // { "type": "damage", "fx_damage": 5.0 }
+      // ↑ 对目标造成固定伤害（无视无敌帧），fx_damage = 伤害值（浮点数）
+
+      // ====== 阶段控制指令 ======
+      // { "type": "set_phase", "value": "2" }
+      // ↑ 将 linkage 的阶段计数器设置为指定值，用于多阶段特效管理
+      // { "type": "increment_counter" }
+      // ↑ 阶段计数器 +1，每次触发累加一次
+      // { "type": "reset_counter" }
+      // ↑ 阶段计数器归零
+      // { "type": "set_cooldown", "value": "40" }
+      // ↑ 设置当前 linkage 的冷却时间（tick），冷却期间不再触发
+
+      // ====== 服务端命令指令 ======
+      // { "type": "command", "command": "summon minecraft:lightning_bolt ~ ~ ~" }
+      // ↑ 执行任意 Minecraft 命令，以攻击者身份执行
+      //   注意: effect.commands 数组中的 command 指令在服务端执行，不会在客户端执行
+      //   适用于: 召唤实体、设置游戏规则、触发其他 mod 功能等
+    ]
+  },
+
+  "on_hit": [
+    {
+      "trigger": "on_hit",
+      "fx": "photon:orb_bloom",
+      "position": "target",
+      "scale": 1.5,
+      "conditions": [
+        { "type": "hit_type", "value": "critical" }
+      ],
+      "commands": [
+        { "type": "play_sound", "sound": "minecraft:entity.player.attack.crit", "volume": 1.0, "pitch": 1.3 }
+      ]
+    }
+  ],
+
+  // events 通用数组 —— 所有 trigger 都可以在这里写，适合需要统一管理多个事件时使用
+  //   效果与顶层写法完全一致，二者选其一即可
+  "events": [
+    {
+      "trigger": "on_blocked",
+      "fx": "photon:fire_bloom",
+      "position": "self"
+    },
+    {
+      "trigger": "on_dodge",
+      "fx": "photon:trail",
+      "position": "self"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+    "message.photon_or_epicfight.preview.on": "§aEpicFight Preview ON",
+    "message.photon_or_epicfight.preview.off": "§7EpicFight Preview OFF",
+
+    "message.photon_or_epicfight.bone.play": "§aPlaying %s on [%s]",
+    "message.photon_or_epicfight.bone.stop_all": "§cStopped all bone effects",
+    "message.photon_or_epicfight.bone.stop_bone": "§cStopped effects on [%s]",
+    "message.photon_or_epicfight.bone.stop_specific": "§cStopped %s on [%s]",
+    "message.photon_or_epicfight.bone.list_title": "§6[FX] Available effects:",
+    "message.photon_or_epicfight.bone.list_entry": "  §e%s",
+
+    "fxlinkage.loaded": "§aLoaded %d FX linkages",
+    "fxlinkage.reload": "§aFX linkages reloaded",
+    "fxlinkage.error": "§cFailed to load FX linkage: %s",
+    "fxlinkage.trigger.hit": "§7[FX] Hit triggered: %s",
+    "fxlinkage.trigger.skill": "§7[FX] Skill triggered: %s",
+    "fxlinkage.trigger.guard": "§7[FX] Guard triggered: %s",
+
+    "photon.gui.editor.animation.title": "Animation Control",
+    "photon.gui.editor.animation.path": "Animation Path",
+    "photon.gui.editor.animation.path.tip": "Enter animation ResourceLocation, e.g. epicfight:biped/living/idle",
+    "photon.gui.editor.animation.play": "▶ Play",
+    "photon.gui.editor.animation.stop": "■ Stop",
+    "photon.gui.editor.animation.hint": "Tip: Enable EpicFight preview first",
+    "photon.gui.editor.animation.browse": "Browse Animations",
+    "photon.gui.editor.animation.search": "Search animation path",
+    "ldlib.gui.editor.register.editor.fx.animation_control": "Animation Control"
+}

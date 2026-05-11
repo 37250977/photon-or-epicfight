@@ -1,0 +1,20 @@
+{
+    "message.photon_or_epicfight.preview.on": "§aEpicFight 预览已开启",
+    "message.photon_or_epicfight.preview.off": "§7EpicFight 预览已关闭",
+    "photon.gui.editor.animation.title": "动画控制",
+    "photon.gui.editor.animation.path": "动画路径",
+    "photon.gui.editor.animation.path.tip": "输入动画 ResourceLocation，如 epicfight:biped/living/idle",
+    "photon.gui.editor.animation.play": "▶ 播放",
+    "photon.gui.editor.animation.stop": "■ 停止",
+    "photon.gui.editor.animation.hint": "提示: 先开启 EpicFight 预览",
+    "photon.gui.editor.animation.browse": "浏览动画",
+    "photon.gui.editor.animation.search": "搜索动画路径",
+    "ldlib.gui.editor.register.editor.fx.animation_control": "动画控制",
+
+    "fxlinkage.loaded": "§a已加载 %d 个特效联动配置",
+    "fxlinkage.reload": "§a特效联动配置已重载",
+    "fxlinkage.error": "§c特效联动配置加载失败: %s",
+    "fxlinkage.trigger.hit": "§7[FX联动] 命中触发: %s",
+    "fxlinkage.trigger.skill": "§7[FX联动] 技能触发: %s",
+    "fxlinkage.trigger.guard": "§7[FX联动] 格挡触发: %s"
+}

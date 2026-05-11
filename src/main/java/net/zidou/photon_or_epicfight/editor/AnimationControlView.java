@@ -20,7 +20,7 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.zidou.photon_or_epicfight.animation.ArmatureResolver;
-import net.zidou.photon_or_epicfight.config.PhotonEditorConfig;
+import net.zidou.photon_or_epicfight.editor_config.PhotonEditorConfig;
 import net.zidou.photon_or_epicfight.store.PhotonPatchStore;
 import org.joml.Quaternionf;
 import org.joml.Vector3f;

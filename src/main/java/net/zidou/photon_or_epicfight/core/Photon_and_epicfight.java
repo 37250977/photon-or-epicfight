@@ -5,6 +5,7 @@ import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.zidou.photon_or_epicfight.command.BoneCommand;
 import net.zidou.photon_or_epicfight.command.PreviewCommand;
+import net.zidou.photon_or_epicfight.fxlinkage.FxLinkageMod;
 
 @Mod(Photon_and_epicfight.MODID)
 public class Photon_and_epicfight {
@@ -13,6 +14,7 @@ public class Photon_and_epicfight {
 
     public Photon_and_epicfight() {
         MinecraftForge.EVENT_BUS.addListener(this::onRegisterCommands);
+        FxLinkageMod.init();
     }
 
     private void onRegisterCommands(RegisterCommandsEvent event) {

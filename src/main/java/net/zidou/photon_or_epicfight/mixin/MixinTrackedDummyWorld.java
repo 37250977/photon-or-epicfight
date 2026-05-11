@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 @Mixin(value = TrackedDummyWorld.class, remap = false)
 public class MixinTrackedDummyWorld {
 
-    @Redirect(method = "tickWorld", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/Entity;tick()V"))
+    @Redirect(method = "tickWorld", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/Entity;tick()V", remap = true))
     private void photon$freezeCloneTick(Entity entity) {
         if (PhotonPatchStore.PATCHES.containsKey(entity.getId())) {
             entity.tickCount++;

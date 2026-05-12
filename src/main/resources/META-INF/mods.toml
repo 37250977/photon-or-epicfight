@@ -66,20 +66,20 @@ side = "BOTH"
 [[dependencies."${mod_id}"]]
 modId = "epicfight"
 mandatory = true
-versionRange = "[20.14.17]"
+versionRange = "[20.14.17,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies."${mod_id}"]]
 modId = "photon"
 mandatory = true
-versionRange = "[1.1.17]"
+versionRange = "[1.1.17,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies."${mod_id}"]]
 modId = "ldlib"
 mandatory = true
-versionRange = "[1.0.49]"
+versionRange = "[1.0.49,)"
 ordering = "NONE"
 side = "BOTH"

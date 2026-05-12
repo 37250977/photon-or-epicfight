@@ -107,6 +107,19 @@
     //   说明: 由 LivingHurtEvent 中的伤害值决定——单次伤害 > 目标最大血量 × 30% 则为 "critical"，否则为 "normal"
     //   可选值: "normal"（普通攻击）, "critical"（暴击/高伤害攻击）
 
+    { "type": "damage_type", "value": "mob" },
+    //   ↑ 条件: 伤害源类型
+    //   说明: 来自 DamageSource.getMsgId()，根据造成伤害的方式区分
+    //   常见值: "mob"（生物攻击）, "player"（玩家攻击）, "indirectMagic"（魔法）
+    //          "indirectMob"（投射物）, "onFire"（火焰）, "lava"（岩浆）
+    //          "wither"（凋零）, "starve"（饥饿）, "fall"（摔落）
+    //          epicfight 攻击通常为 "mob" 或 "player"
+
+    { "type": "angle", "min": 0, "max": 45 },
+    //   ↑ 条件: 攻击者朝向与目标方向之间的水平夹角（度）
+    //   说明: 使用攻击者的视线向量与目标方向的点积计算，0 = 正对目标，180 = 背对目标
+    //   用途: 正面攻击触发格挡特效（angle < 60），背后攻击触发背刺特效（angle > 150）
+
     { "type": "target_type", "value": "boss" },
     //   ↑ 条件: 被攻击目标的实体类型分类
     //   可选值:
@@ -165,7 +178,7 @@
     { "type": "has_counter", "min": 0, "max": 3 },
     // ↑ 条件: 阶段性计数器（phase），与顶层的 phase 条件功能相同
     //   说明: 与 phase 条件的区别——has_counter 是 events 级别条件（判断当前 phase），
-    //         phase 是全局 linkage 匹配条件。两者底层使用同一个 states.phase 值
+    //         phase 是全局 linkage 匹配条件。两者底层使用同一个 ctx.phase 值
     //   用途: 多阶段特效的 event 级别控制
 
     // ====== EpicFight 专用条件 ======
@@ -231,13 +244,17 @@
     "phase": 0,           // ✅ 初始阶段
     "max_phase": 3,       // ✅ 最大阶段
     "cooldown": 5,        // ✅ 冷却（tick）
-    "global": false       // ✅ 全局冷却（所有 linkage 共享）
+    "global": false       // ⚠️ 字段已定义但全局冷却逻辑尚未在 tickCooldowns 中实现，目前不生效
   },
 
 
   // ======================== 可用事件 ========================
 
-  // ✅ 所有事件均已实现（共 16 个，按用途分组），均可作为顶层 key 或 events 数组使用:
+  // ✅ 所有事件均已实现（共 16 个，按用途分组），{} 和 [] 两种写法都支持:
+  //
+  //   简写: "on_hit": { "fx": "photon:fire" }                    ← 单特效
+  //   完整: "on_hit": [ { "fx": "photon:fire" }, ... ]           ← 多特效
+  //   等效: "events": [ { "trigger": "on_hit", "fx": "photon:fire" } ]  ← 也可放进 events
   //
   // ====== 攻击视角（你攻击别人时触发）======  
   //   on_hit          成功命中目标，触发的条件: LivingHurtEvent 或 DEAL_DAMAGE_EVENT
@@ -364,8 +381,8 @@
     }
   ],
 
-  // events 通用数组 —— 所有 trigger 都可以在这里写，适合需要统一管理多个事件时使用
-  //   效果与顶层写法完全一致，二者选其一即可
+  // events 通用数组 —— 效果与顶层 key 完全一致，适合统一管理 / 混合多个 trigger 时使用
+  //   二选一即可，也可以混用: 顶层 key 写主要效果，events 写附加效果
   "events": [
     {
       "trigger": "on_blocked",

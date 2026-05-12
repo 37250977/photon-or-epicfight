@@ -39,7 +39,15 @@ authors = "zi_dou" #optional
 #displayTest="MATCH_VERSION" # MATCH_VERSION is the default if nothing is specified (#optional)
 
 # The description text for the mod (multi line!) (#mandatory)
-description = '''ç»æä½å'''
+description = '''ç»æä½å
+Required dependencies (must install):
+  - Epic Fight       mc1.20.1-20.14.17
+  - Photon           mc1.20.1-1.1.17
+  - LDLib            mc1.20.1-1.0.49
+
+Optional dependencies (extra features):
+  - Combat Evolution  — 耐力系统 + 处决事件
+'''
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
 [[dependencies."photon_and_epicfight"]]
 modId = "forge"
@@ -52,5 +60,26 @@ side = "BOTH"
 modId = "minecraft"
 mandatory = true
 versionRange = "[1.20.1,1.21)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies."photon_and_epicfight"]]
+modId = "epicfight"
+mandatory = true
+versionRange = "[20.14.17]"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies."photon_and_epicfight"]]
+modId = "photon"
+mandatory = true
+versionRange = "[1.1.17]"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies."photon_and_epicfight"]]
+modId = "ldlib"
+mandatory = true
+versionRange = "[1.0.49]"
 ordering = "NONE"
 side = "BOTH"

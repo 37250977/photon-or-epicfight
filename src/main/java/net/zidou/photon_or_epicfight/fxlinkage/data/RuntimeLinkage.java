@@ -37,52 +37,52 @@ public class RuntimeLinkage {
 
         this.eventEffects = new HashMap<>();
         if (raw.on_skill_start != null) {
-            eventEffects.computeIfAbsent("on_skill_start", k -> new ArrayList<>()).add(raw.on_skill_start);
+            eventEffects.computeIfAbsent("on_skill_start", k -> new ArrayList<>()).addAll(raw.on_skill_start);
         }
         if (raw.on_skill_end != null) {
-            eventEffects.computeIfAbsent("on_skill_end", k -> new ArrayList<>()).add(raw.on_skill_end);
+            eventEffects.computeIfAbsent("on_skill_end", k -> new ArrayList<>()).addAll(raw.on_skill_end);
         }
         if (raw.on_hit != null) {
             eventEffects.computeIfAbsent("on_hit", k -> new ArrayList<>()).addAll(raw.on_hit);
         }
         if (raw.on_guard != null) {
-            eventEffects.computeIfAbsent("on_guard", k -> new ArrayList<>()).add(raw.on_guard);
+            eventEffects.computeIfAbsent("on_guard", k -> new ArrayList<>()).addAll(raw.on_guard);
         }
         if (raw.on_combo != null) {
-            eventEffects.computeIfAbsent("on_combo", k -> new ArrayList<>()).add(raw.on_combo);
+            eventEffects.computeIfAbsent("on_combo", k -> new ArrayList<>()).addAll(raw.on_combo);
         }
         if (raw.on_charged != null) {
-            eventEffects.computeIfAbsent("on_charged", k -> new ArrayList<>()).add(raw.on_charged);
+            eventEffects.computeIfAbsent("on_charged", k -> new ArrayList<>()).addAll(raw.on_charged);
         }
         if (raw.on_dodge != null) {
-            eventEffects.computeIfAbsent("on_dodge", k -> new ArrayList<>()).add(raw.on_dodge);
+            eventEffects.computeIfAbsent("on_dodge", k -> new ArrayList<>()).addAll(raw.on_dodge);
         }
         if (raw.on_parry != null) {
-            eventEffects.computeIfAbsent("on_parry", k -> new ArrayList<>()).add(raw.on_parry);
+            eventEffects.computeIfAbsent("on_parry", k -> new ArrayList<>()).addAll(raw.on_parry);
         }
         if (raw.on_kill != null) {
-            eventEffects.computeIfAbsent("on_kill", k -> new ArrayList<>()).add(raw.on_kill);
+            eventEffects.computeIfAbsent("on_kill", k -> new ArrayList<>()).addAll(raw.on_kill);
         }
         if (raw.on_blocked != null) {
-            eventEffects.computeIfAbsent("on_blocked", k -> new ArrayList<>()).add(raw.on_blocked);
+            eventEffects.computeIfAbsent("on_blocked", k -> new ArrayList<>()).addAll(raw.on_blocked);
         }
         if (raw.on_first_hit != null) {
-            eventEffects.computeIfAbsent("on_first_hit", k -> new ArrayList<>()).add(raw.on_first_hit);
+            eventEffects.computeIfAbsent("on_first_hit", k -> new ArrayList<>()).addAll(raw.on_first_hit);
         }
         if (raw.on_phase_change != null) {
-            eventEffects.computeIfAbsent("on_phase_change", k -> new ArrayList<>()).add(raw.on_phase_change);
+            eventEffects.computeIfAbsent("on_phase_change", k -> new ArrayList<>()).addAll(raw.on_phase_change);
         }
         if (raw.on_airborne != null) {
-            eventEffects.computeIfAbsent("on_airborne", k -> new ArrayList<>()).add(raw.on_airborne);
+            eventEffects.computeIfAbsent("on_airborne", k -> new ArrayList<>()).addAll(raw.on_airborne);
         }
         if (raw.on_stun != null) {
-            eventEffects.computeIfAbsent("on_stun", k -> new ArrayList<>()).add(raw.on_stun);
+            eventEffects.computeIfAbsent("on_stun", k -> new ArrayList<>()).addAll(raw.on_stun);
         }
         if (raw.on_knockdown != null) {
-            eventEffects.computeIfAbsent("on_knockdown", k -> new ArrayList<>()).add(raw.on_knockdown);
+            eventEffects.computeIfAbsent("on_knockdown", k -> new ArrayList<>()).addAll(raw.on_knockdown);
         }
         if (raw.on_execution != null) {
-            eventEffects.computeIfAbsent("on_execution", k -> new ArrayList<>()).add(raw.on_execution);
+            eventEffects.computeIfAbsent("on_execution", k -> new ArrayList<>()).addAll(raw.on_execution);
         }
         if (raw.events != null) {
             for (FxEffect effect : raw.events) {

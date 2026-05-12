@@ -128,12 +128,6 @@ public class FxPlayerEventListener {
             }
         });
 
-        // BASIC_ATTACK_EVENT → on_hit (fallback)
-        listener.addEventListener(PlayerEventListener.EventType.BASIC_ATTACK_EVENT, FX_EVENT_UUID, (BasicAttackEvent event) -> {
-            MatchContext ctx = EpicFightEventHandler.buildMatchContext(player, null, null);
-            FxLinkageEngine.fireEvent("on_hit", ctx, player.position());
-        });
-
         // PLAYER_KILLED_EVENT → on_kill
         listener.addEventListener(PlayerEventListener.EventType.PLAYER_KILLED_EVENT, FX_EVENT_UUID, (PlayerKilledEvent event) -> {
             if (event.getDamageSource().getEntity() instanceof LivingEntity target) {

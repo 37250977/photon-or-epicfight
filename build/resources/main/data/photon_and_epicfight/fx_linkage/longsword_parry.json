@@ -13,5 +13,17 @@
     "follow_rotation": false,
     "allow_multi": true,
     "duration": 20
-  }
+  },
+  "on_hit": [
+    {
+      "trigger": "on_hit",
+      "fx": "photon:xie",
+      "position": "target",
+      "follow": false,
+      "bone": "Chest",
+      "follow_rotation": false,
+      "allow_multi": true,
+      "duration": 20
+    }
+  ]
 }

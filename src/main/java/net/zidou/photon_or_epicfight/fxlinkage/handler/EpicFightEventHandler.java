@@ -7,6 +7,7 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -107,8 +108,17 @@ public class EpicFightEventHandler {
             }
         }
 
+        if (source != null) {
+            ctx.damageType = source.getMsgId();
+        }
+
         if (attacker != null && target != null) {
             ctx.attackDistance = (float) attacker.distanceTo(target);
+            // 计算攻击角度: 攻击者朝向与目标方向之间的水平夹角（度），0 = 正对目标，180 = 背对目标
+            Vec3 lookVec = attacker.getLookAngle();
+            Vec3 toTarget = target.position().subtract(attacker.position()).normalize();
+            double dot = Math.max(-1.0, Math.min(1.0, lookVec.dot(toTarget)));
+            ctx.attackAngle = (float) Math.toDegrees(Math.acos(dot));
         }
 
         return ctx;

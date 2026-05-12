@@ -14,22 +14,22 @@ public class FxLinkageData {
 
     public List<FxCondition> conditions;
     public List<FxEffect> events;
-    public FxEffect on_skill_start;
-    public FxEffect on_skill_end;
+    public List<FxEffect> on_skill_start;
+    public List<FxEffect> on_skill_end;
     public List<FxEffect> on_hit;
-    public FxEffect on_guard;
-    public FxEffect on_combo;
-    public FxEffect on_charged;
-    public FxEffect on_dodge;
-    public FxEffect on_parry;
-    public FxEffect on_kill;
-    public FxEffect on_blocked;
-    public FxEffect on_first_hit;
-    public FxEffect on_phase_change;
-    public FxEffect on_airborne;
-    public FxEffect on_stun;
-    public FxEffect on_knockdown;
-    public FxEffect on_execution;
+    public List<FxEffect> on_guard;
+    public List<FxEffect> on_combo;
+    public List<FxEffect> on_charged;
+    public List<FxEffect> on_dodge;
+    public List<FxEffect> on_parry;
+    public List<FxEffect> on_kill;
+    public List<FxEffect> on_blocked;
+    public List<FxEffect> on_first_hit;
+    public List<FxEffect> on_phase_change;
+    public List<FxEffect> on_airborne;
+    public List<FxEffect> on_stun;
+    public List<FxEffect> on_knockdown;
+    public List<FxEffect> on_execution;
 
     public static class States {
         public boolean phaselock = false;

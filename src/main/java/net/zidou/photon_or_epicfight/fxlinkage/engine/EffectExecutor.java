@@ -63,6 +63,20 @@ public class EffectExecutor {
         executeMergedEffect(effect, linkage, attacker, target, hitPos);
     }
 
+    public static void executeEffect(FxEffect effect, String side,
+                                     LivingEntity attacker, LivingEntity target, Vec3 hitPos) {
+        if (effect.profile != null && !effect.profile.isEmpty()) {
+            FxProfileData profile = FxProfileLoader.getProfile(effect.profile);
+            if (profile != null) {
+                FxEffect merged = mergeWithProfile(effect, profile);
+                executeMergedEffect(merged, side, attacker, target, hitPos);
+                return;
+            }
+        }
+
+        executeMergedEffect(effect, side, attacker, target, hitPos);
+    }
+
     private static FxEffect mergeWithProfile(FxEffect effect, FxProfileData profile) {
         FxEffect merged = new FxEffect();
         merged.fx = effect.fx != null ? effect.fx : profile.fx;
@@ -98,9 +112,33 @@ public class EffectExecutor {
         }
     }
 
+    private static void executeMergedEffect(FxEffect effect, String side,
+                                            LivingEntity attacker, LivingEntity target, Vec3 hitPos) {
+        boolean allowMulti = effect.allow_multi != null && effect.allow_multi;
+
+        if (effect.commands != null) {
+            for (FxCommand cmd : effect.commands) {
+                executeCommand(cmd, side, attacker, target, hitPos);
+            }
+        }
+        if (effect.fx != null && !effect.fx.isEmpty()) {
+            if (!"server".equals(side)) {
+                boolean follow = effect.follow != null && effect.follow;
+                spawnFX(effect.fx, effect.position, follow, effect.scale,
+                        effect.bone, effect.follow_rotation, allowMulti,
+                        attacker, target, hitPos);
+            }
+        }
+    }
+
     public static void executeCommand(FxCommand cmd, RuntimeLinkage linkage, LivingEntity attacker,
                                       LivingEntity target, Vec3 hitPos) {
         executeCommand(cmd, linkage, attacker, target, hitPos, "both");
+    }
+
+    public static void executeCommand(FxCommand cmd, String side, LivingEntity attacker,
+                                      LivingEntity target, Vec3 hitPos) {
+        executeCommand(cmd, null, attacker, target, hitPos, side);
     }
 
     private static void executeCommand(FxCommand cmd, RuntimeLinkage linkage, LivingEntity attacker,
@@ -130,10 +168,10 @@ public class EffectExecutor {
                 if (!"client".equals(side))
                     applyDamage(cmd, attacker, target);
             }
-            case SET_PHASE -> setPhase(cmd, linkage);
-            case SET_COOLDOWN -> setCooldown(cmd, linkage);
-            case INCREMENT_COUNTER -> incrementCounter(cmd, linkage);
-            case RESET_COUNTER -> resetCounter(linkage);
+            case SET_PHASE -> { if (linkage != null) setPhase(cmd, linkage); }
+            case SET_COOLDOWN -> { if (linkage != null) setCooldown(cmd, linkage); }
+            case INCREMENT_COUNTER -> { if (linkage != null) incrementCounter(cmd, linkage); }
+            case RESET_COUNTER -> { if (linkage != null) resetCounter(linkage); }
         }
     }
 

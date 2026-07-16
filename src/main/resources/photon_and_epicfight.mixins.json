@@ -5,7 +5,9 @@
   "compatibilityLevel": "JAVA_17",
   "refmap": "photon_and_epicfight.refmap.json",
   "mixins": [
-    "MixinServerPlayerPatch"
+    "MixinCameraEntityCompat",
+    "MixinServerPlayerPatch",
+    "MixinLivingEntityDodge"
   ],
   "client": [
     "EpicFightCapsMixin",

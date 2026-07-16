@@ -1,0 +1,171 @@
+{
+  // ============================================================
+  // Photon + EpicFight 生物联动数据包 —— 全参数中文说明
+  // 文件路径: data/<modid>/fx_linkage_mob/任意名字.json
+  // 注意: JSON 标准不支持注释，实际使用前务必删掉所有 // 开头的注释行
+  //
+  // 与玩家联动 (fx_linkage/) 的区别：
+  // - 攻击者是生物（僵尸/骷髅等）时触发
+  // - 玩家视角的技能（格挡/招架/闪避/蓄力等）在此无效
+  // - 类型标识为 epicfight_fx:mob_linkage
+  // - 数据包放在 fx_linkage_mob/ 目录下
+  //
+  // CE 联动说明：
+  // - 安装 CombatEvolution 后，on_guard / on_parry / on_dodge / on_blocked / on_stun / on_knockdown 全部可用
+  // - 无 CE 时仅 on_hit / on_kill 可用
+  // ============================================================
+
+  "type": "epicfight_fx:mob_linkage",
+
+  "priority": 10,
+  // ✅ 优先级（0~100，默认 10），越高越优先匹配
+
+
+  "side": "both",
+  // ✅ 运行端: "both" / "client" / "server"
+
+
+  // ======================== 武器匹配 ========================
+  // 生物使用武器时（如骷髅持剑），可通过以下字段匹配
+
+  "weapon_categories": [
+    "epicfight:sword",
+    "epicfight:greatsword"
+  ],
+
+  "weapons": [
+    "minecraft:diamond_sword"
+  ],
+
+
+  // ======================== 条件系统 ========================
+  // 与玩家联动共享同一套条件引擎，全部条件支持
+
+  "conditions": [
+    { "type": "distance", "min": 0, "max": 5 },
+    { "type": "health", "target": "target", "max": 0.3, "comparator": "less_ratio" },
+    { "type": "hit_type", "value": "critical" },
+    { "type": "target_type", "value": "player" },
+    { "type": "target_state", "value": "airborne" },
+    { "type": "biome", "value": "minecraft:plains" },
+    { "type": "weather", "value": "rain" },
+    { "type": "world_time", "min": 0.5, "max": 0.75 },
+    { "type": "random", "value": "0.5" },
+    { "all_of": [
+      { "type": "distance", "max": 3 },
+      { "type": "hit_type", "value": "critical" }
+    ]}
+  ],
+
+
+  // ======================== 可用事件 ========================
+
+  // ✅ 生物视角触发（生物攻击时触发）:
+  //    事件          触发者         触发条件
+  //   on_hit         生物攻击者     生物命中目标（玩家/生物）
+  //   on_first_hit   生物攻击者     生物单次战斗首次命中（需 CE）
+  //   on_blocked     生物攻击者     生物攻击被目标格挡（CE 增强：可检测玩家格挡和 CE 生物格挡）
+  //
+  //   on_kill        生物攻击者     生物击杀目标
+  //
+  //   on_guard       生物防御者     生物成功格挡了攻击（需 CE，isGuard）
+  //   on_parry       生物防御者     生物成功招架了攻击（需 CE，isInCounter）
+  //   on_dodge       生物防御者     生物闪避了攻击（需 CE，通过 Mixin 在 hurt() 返回后检测）
+  //
+  //   on_stun        目标           生物对目标造成眩晕（需 CE，由 CE 追踪攻击者）
+  //   on_knockdown   目标           生物击倒目标（需 CE，由 CE 追踪攻击者）
+  //
+  // 无 CE 时退化为 on_hit / on_kill 两个基础事件
+
+
+  // ======================== 特效事件配置 ========================
+  // FxEffect 字段与玩家联动完全一致，详见玩家联动文档
+
+  "on_hit": {
+    "trigger": "on_hit",
+    "fx": "photon:fire",
+    "position": "target",
+    "allow_multi": true,
+    "duration": 20
+  },
+
+  "on_kill": {
+    "trigger": "on_kill",
+    "fx": "photon:orb_bloom",
+    "position": "target",
+    "scale": 2.0,
+    "commands": [
+      { "type": "play_sound", "sound": "minecraft:entity.lightning_bolt.impact", "volume": 1.0, "pitch": 0.8 }
+    ]
+  },
+
+  "on_blocked": {
+    "trigger": "on_blocked",
+    "fx": "photon:fire_bloom",
+    "position": "weapon",
+    "follow": true,
+    "bone": "Tool_R",
+    "allow_multi": true,
+    "duration": 15
+  },
+
+  "on_guard": {
+    "trigger": "on_guard",
+    "fx": "photon:shield_spark",
+    "position": "self",
+    "duration": 10
+  },
+
+  "on_parry": {
+    "trigger": "on_parry",
+    "fx": "photon:trail",
+    "position": "weapon",
+    "follow": true,
+    "bone": "Tool_R",
+    "duration": 10
+  },
+
+  "on_dodge": {
+    "trigger": "on_dodge",
+    "fx": "photon:wind",
+    "position": "self",
+    "duration": 5
+  },
+
+  "on_stun": {
+    "trigger": "on_stun",
+    "fx": "photon:gd_text",
+    "position": "target",
+    "duration": 10
+  },
+
+  "on_knockdown": {
+    "trigger": "on_knockdown",
+    "fx": "photon:new_fire",
+    "position": "ground",
+    "scale": 2.0,
+    "duration": 20
+  },
+
+  // events 通用数组 —— 效果与顶层 key 完全一致
+  "events": [
+    {
+      "trigger": "on_first_hit",
+      "fx": "photon:trail",
+      "position": "weapon",
+      "follow": true,
+      "bone": "Tool_R",
+      "duration": 10
+    }
+  ],
+
+
+  // ======================== 阶段与冷却 ========================
+
+  "states": {
+    "phaselock": false,
+    "phase": 0,
+    "max_phase": 3,
+    "cooldown": 20
+  }
+}

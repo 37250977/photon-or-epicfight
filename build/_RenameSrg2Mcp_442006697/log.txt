@@ -1,0 +1,16 @@
+Java Launcher: C:\Program Files\Eclipse Adoptium\jdk-17.0.15.6-hotspot\bin\java.exe
+Arguments: '--task, SRG_TO_MCP, --input, C:\Users\19810\.gradle\caches\modules-2\files-2.1\curse.maven\modernfix-790626\8050207\3170d5b80737690816ce06000bc4b1fa6aaef1e4\modernfix-790626-8050207.jar, --output, C:\Users\19810\.gradle\caches\forge_gradle\deobf_dependencies\curse\maven\modernfix-790626\8050207_mapped_parchment_2023.09.03-1.20.1\modernfix-790626-8050207_mapped_parchment_2023.09.03-1.20.1.jar, --mcp, C:\Users\19810\.gradle\caches\parchmentgradle\org\parchmentmc\data\parchment-1.20.1\2023.09.03\parchment-1.20.1-2023.09.03.zip, --strip-signatures'
+Classpath:
+ - C:\Users\19810\.gradle\caches\forge_gradle\maven_downloader\net\minecraftforge\installertools\1.4.4\installertools-1.4.4-fatjar.jar
+Working directory: D:\game\bag\endless\photon or epicfight\build\_RenameSrg2Mcp_442006697
+Main class: net.minecraftforge.installertools.ConsoleTool
+====================================
+Task: SRG_TO_MCP
+Input:  C:\Users\19810\.gradle\caches\modules-2\files-2.1\curse.maven\modernfix-790626\8050207\3170d5b80737690816ce06000bc4b1fa6aaef1e4\modernfix-790626-8050207.jar
+Output: C:\Users\19810\.gradle\caches\forge_gradle\deobf_dependencies\curse\maven\modernfix-790626\8050207_mapped_parchment_2023.09.03-1.20.1\modernfix-790626-8050207_mapped_parchment_2023.09.03-1.20.1.jar
+MCP:    C:\Users\19810\.gradle\caches\parchmentgradle\org\parchmentmc\data\parchment-1.20.1\2023.09.03\parchment-1.20.1-2023.09.03.zip
+Loading MCP Data
+Processing ZIP file
+Stripped Manifest of sha digests
+Stripped Manifest of sha digests
+Process complete

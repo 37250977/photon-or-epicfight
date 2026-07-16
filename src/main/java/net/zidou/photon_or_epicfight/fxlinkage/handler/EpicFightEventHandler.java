@@ -11,9 +11,9 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
 import net.zidou.photon_or_epicfight.fxlinkage.data.FxCondition.MatchContext;
 import net.zidou.photon_or_epicfight.fxlinkage.engine.FxLinkageEngine;
+import net.zidou.photon_or_epicfight.fxlinkage.mob.FxMobLinkageEngine;
 import yesman.epicfight.api.animation.types.EntityState;
 import yesman.epicfight.skill.SkillContainer;
 import yesman.epicfight.skill.SkillSlots;
@@ -27,7 +27,6 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Map;
 
-@Mod.EventBusSubscriber(modid = "photon_and_epicfight")
 public class EpicFightEventHandler {
 
     @SubscribeEvent
@@ -43,6 +42,7 @@ public class EpicFightEventHandler {
     public static void onServerTick(TickEvent.ServerTickEvent event) {
         if (event.phase == TickEvent.Phase.END) {
             FxLinkageEngine.tickCooldowns();
+            FxMobLinkageEngine.tickCooldowns();
         }
     }
 

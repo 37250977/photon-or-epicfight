@@ -34,14 +34,14 @@ gamma:0.5
 renderDistance:12
 simulationDistance:12
 entityDistanceScaling:1.0
-guiScale:0
+guiScale:3
 particles:0
 maxFps:120
 graphicsMode:1
 ao:true
 prioritizeChunkUpdates:0
 biomeBlendRadius:2
-renderClouds:"true"
+renderClouds:"false"
 resourcePacks:[]
 incompatibleResourcePacks:[]
 lastServer:
@@ -134,7 +134,7 @@ key_key.epicfight.config:key.keyboard.unknown
 key_key.epicfight.switch_vanilla_model_debug:key.keyboard.unknown
 key_key.modernfix.config:key.keyboard.unknown
 soundCategory_master:1.0
-soundCategory_music:1.0
+soundCategory_music:0.0
 soundCategory_record:1.0
 soundCategory_weather:1.0
 soundCategory_block:1.0

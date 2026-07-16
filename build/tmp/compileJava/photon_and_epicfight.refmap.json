@@ -2,12 +2,18 @@
   "mappings": {
     "net/zidou/photon_or_epicfight/mixin/MixinTrackedDummyWorld": {
       "Lnet/minecraft/world/entity/Entity;tick()V": "Lnet/minecraft/world/entity/Entity;m_8119_()V"
+    },
+    "net/zidou/photon_or_epicfight/mixin/MixinLivingEntityDodge": {
+      "hurt": "Lnet/minecraft/world/entity/LivingEntity;m_6469_(Lnet/minecraft/world/damagesource/DamageSource;F)Z"
     }
   },
   "data": {
     "searge": {
       "net/zidou/photon_or_epicfight/mixin/MixinTrackedDummyWorld": {
         "Lnet/minecraft/world/entity/Entity;tick()V": "Lnet/minecraft/world/entity/Entity;m_8119_()V"
+      },
+      "net/zidou/photon_or_epicfight/mixin/MixinLivingEntityDodge": {
+        "hurt": "Lnet/minecraft/world/entity/LivingEntity;m_6469_(Lnet/minecraft/world/damagesource/DamageSource;F)Z"
       }
     }
   }
